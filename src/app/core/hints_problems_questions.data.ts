@@ -32,16 +32,29 @@ export class Questions {
     ]
   }
 
-  'productivity' = {
+
+
+
+  'I have trouble going to sleep at the right time' = {
     ifYes: [
-      this.confidence,
-      this.focus,
-      this.motivation,
-      this.discipline,
+      {
+        text: 'Do you turn off and put away (hide) your electronics and other temptations, including computer, mobile phones'
+      },
+      {
+        text: 'Think about (and visualize) the benefits of going to sleep at the right time, including being well-rested'
+      },
     ]
   }
 
-  'decisions' = {
+  'Have good sleep' = {
+    ifYes: [
+      this['I have trouble going to sleep at the right time'],
+
+    ]
+  }
+
+
+  'good decisions' = {
     ifYes: [
       {
         text: 'cost-benefit'
@@ -58,8 +71,20 @@ export class Questions {
       {
         text: 'Visualize consequences (financial, emotional, physical, productivity, etc)'
       },
+      this['Have good sleep'],
     ]
   }
+
+  'productivity' = {
+    ifYes: [
+      this.confidence,
+      this.focus,
+      this.motivation,
+      this.discipline,
+      this['good decisions'],
+    ]
+  }
+
 }
 
 function processQuestions(questions: Questions) {
