@@ -19,6 +19,9 @@ export class Questions {
     ]
   }
 
+  'motivation' = {}
+  'discipline' = {}
+
   'focus' = {
     ifYes: [
       {
@@ -33,6 +36,8 @@ export class Questions {
     ifYes: [
       this.confidence,
       this.focus,
+      this.motivation,
+      this.discipline,
     ]
   }
 
@@ -60,6 +65,10 @@ export class Questions {
 function processQuestions(questions: Questions) {
   for ( const key of Object.keys(questions) ) {
     let value = questions[key];
+    if ( ! value ) {
+      value = {}
+      questions[key] = value
+    }
     value.text = value.text || key
     value.id = value.id || key
   }
