@@ -1,27 +1,32 @@
-<div style="border: 2px gray solid">
+<div class="card">
 
-  <p>
-    Wish: {{wish.text}}
-  </p>
 
-  <button
-    *ngIf="wish.ifYes"
-    (click)="onClickYes()"
-  >
-    Yes
-  </button>
 
-  <div
-    *ngIf="isExpanded"
-  >
-    <div
-      style="margin-left: 3rem"
-      *ngFor="let child of wish.ifYes"
-    >
-      <app-hint [wish]="child"></app-hint>
 
-    </div>
+      <p>
+        Wish: {{wish.text}}
+      </p>
 
-  </div>
+      <div class="btn-group btn-group-toggle">
+        <label     *ngIf="wish.ifYes"
+                   class="btn-primary" ngbButtonLabel>
+          <input type="checkbox" ngbButton [(ngModel)]="isExpanded">Yes
+        </label>
+      </div>
+
+      <div
+        *ngIf="isExpanded"
+      >
+        <div
+          style="margin-left: 3rem"
+          *ngFor="let child of wish.ifYes"
+        >
+          <app-hint [wish]="child"></app-hint>
+
+        </div>
+
+      </div>
 
 </div>
+
+
