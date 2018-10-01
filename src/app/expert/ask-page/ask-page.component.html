@@ -1,0 +1,20 @@
+
+This app helps you get to <b>root causes</b> of problems and offers solutions.
+
+<p>Describe your problem</p>
+<p>(for example "I have low motivation")</p>
+
+<!--<input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search"/>-->
+<label for="typeahead-basic">Describe your problem or wish:</label>
+<input id="typeahead-basic" type="text" class="form-control"/>
+
+<div style="background-color: aquamarine; margin: 1rem" *ngFor="let problem of filteredProblems">
+  Problem: {{problem.text}}
+</div>
+
+
+========
+<ng-container *ngFor="let problem of filteredProblems">
+  <app-hint [wish]="problem"></app-hint>
+
+</ng-container>

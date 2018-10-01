@@ -1,0 +1,27 @@
+<div style="border: 2px gray solid">
+
+  <p>
+    Wish: {{wish.text}}
+  </p>
+
+  <button
+    *ngIf="wish.ifYes"
+    (click)="onClickYes()"
+  >
+    Yes
+  </button>
+
+  <div
+    *ngIf="isExpanded"
+  >
+    <div
+      style="margin-left: 3rem"
+      *ngFor="let child of wish.ifYes"
+    >
+      <app-hint [wish]="child"></app-hint>
+
+    </div>
+
+  </div>
+
+</div>
