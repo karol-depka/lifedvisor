@@ -12,6 +12,10 @@ import {
 })
 export class HintComponent implements OnInit {
 
+
+  @Input()
+  isExpanded = false
+
   @Input()
   wish
   //   = {
@@ -25,8 +29,6 @@ export class HintComponent implements OnInit {
   //     }
   //   ]
   // }
-
-  isExpanded = false;
 
 
   constructor() { }

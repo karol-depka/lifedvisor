@@ -19,7 +19,7 @@ export class AskPageComponent implements OnInit {
   //
   //
   filteredProblems = Object.values(questionsProblemsWishes)
-
+  isExpandAll = false
 
   constructor() { }
 

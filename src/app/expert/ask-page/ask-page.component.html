@@ -12,9 +12,17 @@ This app helps you get to <b>root causes</b> of problems and offers solutions.
   Problem: {{problem.text}}
 </div>
 
+<div class="btn-group btn-group-toggle">
+  <label class="btn-primary" ngbButtonLabel>
+    <input type="checkbox" ngbButton [(ngModel)]="isExpandAll">Expand All
+  </label>
+</div>
 
 ========
 <ng-container *ngFor="let problem of filteredProblems">
-  <app-hint [wish]="problem"></app-hint>
+  <app-hint
+    [wish]="problem"
+    [isExpanded]="isExpandAll"
+  ></app-hint>
 
 </ng-container>

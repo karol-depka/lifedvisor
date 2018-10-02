@@ -1,8 +1,5 @@
 <div class="card">
 
-
-
-
       <p>
         Wish: {{wish.text || wish}}
       </p>
@@ -21,7 +18,10 @@
           style="margin-left: 3rem"
           *ngFor="let child of wish.ifYes"
         >
-          <app-hint [wish]="child"></app-hint>
+          <app-hint
+            [wish]="child"
+            [isExpanded]="isExpanded"
+          ></app-hint>
 
         </div>
 
