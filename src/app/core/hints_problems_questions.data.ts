@@ -60,6 +60,7 @@ export class Questions {
   }
 
 
+  /* cross-cutting concern? */
   'good decisions' = {
     ifYes: [
       {
@@ -107,6 +108,19 @@ export class Questions {
   'Software design' = {
     ifYes: [
       'Early spend the most time&energy designing things that will affect the most other things and the things that will be hardest to change. Things that are easy to change later, should be left out crude, to free up energy and focus on the more important things',
+    ]
+  }
+
+
+  'Prioritizing' = {
+    ifYes: [
+      'Can prioritize the part (thus need to split tasks) of tasks, where things are written down, to not forget them and to stop nagging thoughts. The other part of the task can be done later when time permits.'
+    ]
+  }
+
+  'Planning' = {
+    ifYes: [
+      this['Prioritizing']
     ]
   }
 
