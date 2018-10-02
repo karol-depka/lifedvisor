@@ -72,6 +72,19 @@ export class Questions {
         text: 'Visualize consequences (financial, emotional, physical, productivity, etc)'
       },
       this['Have good sleep'],
+      'When'
+
+    ]
+  }
+
+  'energy' = {
+    ifYes: [
+      {
+        text: 'Do physical activity to increase blood oxigenation and feeling of control',
+        ifYes: [
+          'You can use cleaning (e.g. vacuuming, house cleaning) as a good way to get physical activity while at the same improving the surroundings'
+        ]
+      }
     ]
   }
 
@@ -82,6 +95,12 @@ export class Questions {
       this.motivation,
       this.discipline,
       this['good decisions'],
+    ]
+  }
+
+  'Software design' = {
+    ifYes: [
+      'Early spend the most time&energy designing things that will affect the most other things and the things that will be hardest to change. Things that are easy to change later, should be left out crude, to free up energy and focus on the more important things',
     ]
   }
 
