@@ -22,6 +22,9 @@ export class Questions {
   'motivation' = {}
   'discipline' = {}
 
+  'Write down things (e.g. lists, email draft) to free your mind from nagging thoughts'
+
+
   'focus' = {
     ifYes: [
       {
@@ -29,11 +32,9 @@ export class Questions {
       }, {
         text: 'do little tasks quickly, to free the mind from distracting nagging thoughts'
       },
+      this['Write down things (e.g. lists, email draft) to free your mind from nagging thoughts']
     ]
   }
-
-
-
 
   'I have trouble going to sleep at the right time' = {
     ifYes: [
@@ -48,6 +49,12 @@ export class Questions {
 
   'Have good sleep' = {
     ifYes: [
+      {
+        text: 'Improve falling asleep',
+        ifYes: [
+          this['Write down things (e.g. lists, email draft) to free your mind from nagging thoughts']
+        ]
+      },
       this['I have trouble going to sleep at the right time'],
     ]
   }
