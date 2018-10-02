@@ -49,7 +49,6 @@ export class Questions {
   'Have good sleep' = {
     ifYes: [
       this['I have trouble going to sleep at the right time'],
-
     ]
   }
 
@@ -72,7 +71,7 @@ export class Questions {
         text: 'Visualize consequences (financial, emotional, physical, productivity, etc)'
       },
       this['Have good sleep'],
-      'When'
+      'When trapped into thinking "either-or", think of ways of being able to realize all the options, or combinations of them. E.g. build a business AND be able to travel -> lifestyle business.'
 
     ]
   }
