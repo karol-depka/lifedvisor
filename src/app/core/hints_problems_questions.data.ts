@@ -8,6 +8,7 @@
 export class LiHint {
   constructor(
     public ifYes?: (LiHint|string)[],
+    /** TODO: rename to title */
     public text?: string,
     public when?: string,
     public example?: string,
@@ -166,10 +167,21 @@ export class Questions {
 
   'Energetic music' = {}
 
-  'Getting up from sleep' = {
+  'Getting up from sleep/bed' = {
     ifYes: [
       this['Energetic music'],
-      '(?) Have done something exciting the previous day/afternoon/evening, to have the dopamine effect spill to the next morning. E.g. in my case it was alcohol/games etc.'
+      { when: '2018-10-06 23:04',
+        text: '(?) Have done something exciting the previous day/afternoon/evening, to have the dopamine effect spill to the next morning. E.g. in my case it was alcohol/games etc.',
+        comments: 'Could be something like a nice TED or progress on an attractive non-vague, non-vaguely-needed task',
+      },
+      { text: 'Have a strong light source',
+        comments: 'Could be natural sunlight or wake-up light or wake-up clock with light.'
+      },
+      {
+        text: 'Start the day with something fun/energizing and with get-up/bootstrap routine; don\'t try to start with some unattractive/difficult tasks (unless they are urgent enough to get going)',
+        comments: 'Then, plan the day; which could be motivating too, to see how much I can achieve.'
+        /* TODO: lots of practical examples */
+      }
     ]
   }
 
@@ -210,6 +222,14 @@ export class Questions {
     ifYes: [this['Planning']]
   }
 
+  'Effectiveness / optimizations' = hint({
+    ifYes: [
+      {
+        text: 'Look for, and utilize, little accidental or semi-accidental coincidences, patterns; it can even double effectiveness; even though it might feel like "cheating".'
+      }
+    ]
+  })
+
   'Productivity' = {
     ifYes: [
       this.Confidence,
@@ -219,6 +239,7 @@ export class Questions {
       this['Planning'],
       this['Energy'],
       this['Good decisions'],
+      this['Effectiveness / optimizations']
     ]
   }
 
@@ -261,14 +282,6 @@ export class Questions {
       {
         text: 'Watch out for triggering other people\'s "status threat"',
         when: '2018-10-06 22:46',
-      }
-    ]
-  })
-
-  'Effectiveness / optimizations' = hint({
-    ifYes: [
-      {
-        text: 'Look for, and utilize, little accidental or semi-accidental coincidences, patterns; it can even double effectiveness; even though it might feel like "cheating".'
       }
     ]
   })
