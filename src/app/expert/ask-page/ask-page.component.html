@@ -8,7 +8,7 @@ This app helps you get to <b>root causes</b> of problems and offers solutions.
 <label for="typeahead-basic">Describe your problem or wish:</label>
 <input id="typeahead-basic" type="text" class="form-control"/>
 
-<div style="background-color: aquamarine; margin: 1rem" *ngFor="let problem of filteredProblems">
+<div style="background-color: aquamarine; margin: 1rem" *ngFor="let problem of []">
   Problem: {{problem.text}}
 </div>
 
@@ -18,7 +18,8 @@ This app helps you get to <b>root causes</b> of problems and offers solutions.
   </label>
 </div>
 
-========
+<!--{{filteredProblems|json}}-->
+
 <ng-container *ngFor="let problem of filteredProblems">
   <app-hint
     [wish]="problem"

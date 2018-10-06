@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { questionsProblemsWishes } from '../../core/hints';
 import {
   LiHint,
-  questionsProblemsWishes,
-} from '../../core/hints_problems_questions.data';
+  } from '../../core/hints_problems_questions.data';
 
 @Component({
   selector: 'app-ask-page',

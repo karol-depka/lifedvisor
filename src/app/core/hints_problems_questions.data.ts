@@ -1,9 +1,19 @@
- // Hints, problems, questions, wishes
+// Hints, problems, questions, wishes
 
 // Every HINT is also a WISH
 
 // Ideas:
 /* 2018-10-02 22:08 Use */
+
+export class LiHintInclusion {
+  /* TODO: examples in the inclusion context; e.g. prioritizing things-hardest-to-change in the context of software design
+   * general principle is the same, and the user might have already learned the principle, but the contextual examples might clarify and make the connections stronger
+   *
+   * Also this could could allow annotating contextually deeper hints in the sub-tree;
+   *
+   * Users will be able to add their own thoughts and examples OrYoL-style
+   */
+}
 
 export class LiHint {
   constructor(
@@ -11,12 +21,12 @@ export class LiHint {
     /** TODO: rename to title */
     public text?: string,
     public when?: string,
-    public example?: string,
+    public example?: string /* | LiHintInclusion []*/,
     public comments?: string,
   ) {}
 }
 
-function hint(param?: LiHint) {
+export function hint(param?: LiHint) {
   return param || {}
 }
 
@@ -201,6 +211,7 @@ export class Questions {
 
   'Prioritizing' = {
     ifYes: [
+      'Early spend the most time&energy designing things that will affect the most other things and the things that will be hardest to change. Things that are easy to change later, should be left out crude, to free up energy and focus on the more important things',
       'Prioritize prioritizing itself',
       'Prioritize things which can shed better light (provide understanding/information) on subsequent tasks (reconnaissance)',
       'Then Prioritize things which involve making decisions which can affect further priorities',
@@ -245,7 +256,6 @@ export class Questions {
 
   'Software design' = {
     ifYes: [
-      'Early spend the most time&energy designing things that will affect the most other things and the things that will be hardest to change. Things that are easy to change later, should be left out crude, to free up energy and focus on the more important things',
       this['Prioritizing'],
     ]
   }
@@ -288,17 +298,3 @@ export class Questions {
 
 }
 
-function processQuestions(questions: Questions) {
-  for ( const key of Object.keys(questions) ) {
-    let value = questions[key];
-    if ( ! value ) {
-      value = {}
-      questions[key] = value
-    }
-    value.text = value.text || key
-    value.id = value.id || key
-  }
-  return questions
-}
-
-export const questionsProblemsWishes = processQuestions(new Questions())
