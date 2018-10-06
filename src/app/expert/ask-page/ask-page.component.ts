@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { questionsProblemsWishes } from '../../core/hints_problems_questions.data';
+import {
+  LiHint,
+  questionsProblemsWishes,
+} from '../../core/hints_problems_questions.data';
 
 @Component({
   selector: 'app-ask-page',
@@ -18,8 +21,8 @@ export class AskPageComponent implements OnInit {
   // ]
   //
   //
-  filteredProblems = Object.values(questionsProblemsWishes)
-  isExpandAll = false
+  filteredProblems: LiHint[] = Object.values(questionsProblemsWishes)
+  isExpandAll = true /* better for debugging */
 
   constructor() { }
 

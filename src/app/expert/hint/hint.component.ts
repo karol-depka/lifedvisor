@@ -3,6 +3,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
+import { LiHint } from '../../core/hints_problems_questions.data';
 
 /** Hint, Wish, Problem */
 @Component({
@@ -17,7 +18,7 @@ export class HintComponent implements OnInit {
   isExpanded = false
 
   @Input()
-  wish
+  wish: LiHint
   //   = {
   //   text: 'Avoid overeating',
   //   children: [

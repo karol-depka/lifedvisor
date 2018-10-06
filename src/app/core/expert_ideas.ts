@@ -228,7 +228,7 @@ export class Questions {
 /* 2018-09-28 02:31 I play too much computer games || I eat too much --> have a reward system that does not involve games/food (e.g. sleep, biking, walking, hike, etc.) */
 
 /* 2018-09-29 13:08 Use emotion labelling */
-/* 2018-09-29 13:08 Use reappraisal / reinterpretation of situations
+/* 2018-09-29 13:08 (cross-cutting concern) Use reappraisal / reinterpretation of situations
 - Examples: doing taxes/invoices is good because it is part of running a company and allows to save money
 * */
 /* 2018-09-29 15:44 lack motivation: ->

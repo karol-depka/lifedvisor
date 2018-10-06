@@ -4,6 +4,14 @@
         Wish: {{wish.text || wish}}
       </p>
 
+  <p *ngIf="wish.example">
+    Example: {{wish.example}}
+  </p>
+
+  <p *ngIf="wish.comments">
+    Comments: {{wish.example}}
+  </p>
+
       <div class="btn-group btn-group-toggle">
         <label     *ngIf="wish.ifYes"
                    class="btn-primary" ngbButtonLabel>
