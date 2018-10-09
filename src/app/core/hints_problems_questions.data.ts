@@ -11,7 +11,9 @@ export class LiHintInclusion {
    *
    * Also this could could allow annotating contextually deeper hints in the sub-tree;
    *
-   * Users will be able to add their own thoughts and examples OrYoL-style
+   * Users will be able to add their own thoughts and examples OrYoL-style.
+   *
+   * And journal / progress-tracking for each hint!
    */
 }
 
@@ -70,8 +72,12 @@ export class Questions {
   })
 
 
-  'Motivation' = {
+  'Motivation' = hint({
     ifYes: [
+      /* FIXME: 'Fun/dopamine' */
+      { text: 'Distinguish between "Have to" and "Want to"',
+        example: `including company invoices; I don't have to do this`
+      },
       this['Utilize virtuous circle (and avoid VICIOUS circle no X -> no Y -> etc): motivation/dopamine -> discipline/perseverance -> progress -> self esteem, excitement, confidence -> more motivation'],
       /* hope/belief */
       { text: 'Reach a critical mass (proof-of-concept), to legitimize the project in your own mind, and to be able to show others',
@@ -79,19 +85,20 @@ export class Questions {
       },
       this['Self-Esteem'],
     ]
-  }
+  })
 
-  'Discipline' = {
+  'Discipline' = hint({
     ifYes: [
+      `Delay gratification, don't DENY gratification`,
       this['Utilize virtuous circle (and avoid VICIOUS circle no X -> no Y -> etc): motivation/dopamine -> discipline/perseverance -> progress -> self esteem, excitement, confidence -> more motivation'],
       this['Motivation'] /* Does discipline require motivation ? */
     ]
-  }
+  })
 
-  'Write down things (e.g. lists, email draft) to free your mind from nagging thoughts' = {}
+  'Write down things (e.g. lists, email draft) to free your mind from nagging thoughts' = hint({})
 
 
-  'Focus' = {
+  'Focus' = hint({
     text: 'Focus and avoiding distractions',
     ifYes: [
       {
@@ -108,20 +115,23 @@ export class Questions {
         'Also topicfriends@gmail.com; also keep in mind delegating (or giving access to) stuff to other people, e.g. assistant, another developer ' ,
       'Disable notifications (sound; and perhaps even on-screen notifications) in all communication media except those used for dealing with urgent things (e.g. phone)'
     ]
-  }
+  })
 
-  'I have trouble going to sleep at the right time' = {
+  'Go to sleep at the right time' = hint({
     ifYes: [
       {
         text: 'Do you turn off and put away (hide) your electronics and other temptations, including computer, mobile phones'
       },
       {
+        text: 'Tomorrow is a day, too (jutro też jest dzień)'
+      },
+      {
         text: 'Think about (and visualize) the benefits of going to sleep at the right time, including being well-rested'
       },
     ]
-  }
+  })
 
-  'Have good sleep' = {
+  'Have good sleep' = hint({
     ifYes: [
       {
         text: 'Improve falling asleep',
@@ -129,9 +139,9 @@ export class Questions {
           this['Write down things (e.g. lists, email draft) to free your mind from nagging thoughts']
         ]
       },
-      this['I have trouble going to sleep at the right time'],
+      this['Go to sleep at the right time'],
     ]
-  }
+  })
 
 
   /* cross-cutting concern? */
@@ -169,20 +179,23 @@ export class Questions {
     ]
   })
 
-  'Avoid over-eating' = hint({
+  'Decide what I want to be; I can\'t be a sumo wrestler and ski jumper at the same time' = hint({
     ifYes: [
-      'Avoid thinking stressful thoughts while eating'
+      {
+        text: 'Choose if I want to still be free and explore or settle down.'
+      }
     ]
   })
 
-  'Energetic music' = {}
+  'Energetic music' = hint({})
 
-  'Getting up from sleep/bed' = {
+  'Getting up from sleep/bed' = hint({
     ifYes: [
       this['Energetic music'],
       { when: '2018-10-06 23:04',
         text: '(?) Have done something exciting the previous day/afternoon/evening, to have the dopamine effect spill to the next morning. E.g. in my case it was alcohol/games etc.',
         comments: 'Could be something like a nice TED or progress on an attractive non-vague, non-vaguely-needed task',
+        example: 'Kurzweil, TED (psychology/tech/science), Interviews, commencement addresses with Jobs, '
       },
       { text: 'Have a strong light source',
         comments: 'Could be natural sunlight or wake-up light or wake-up clock with light.'
@@ -193,10 +206,10 @@ export class Questions {
         /* TODO: lots of practical examples */
       }
     ]
-  }
+  })
 
   /* same as motivation/dopamine ? */
-  'Energy' = {
+  'Energy' = hint({
     ifYes: [
       {
         text: 'Do physical activity to increase blood oxigenation and feeling of control',
@@ -207,9 +220,9 @@ export class Questions {
       this['Have good sleep'],
       this['Energetic music'],
     ]
-  }
+  })
 
-  'Prioritizing' = {
+  'Prioritizing' = hint({
     ifYes: [
       'Early spend the most time&energy designing things that will affect the most other things and the things that will be hardest to change. Things that are easy to change later, should be left out crude, to free up energy and focus on the more important things',
       'Prioritize prioritizing itself',
@@ -218,20 +231,21 @@ export class Questions {
       'Can prioritize things with external dependencies, because of uncertainty of how much they will take',
       'Can prioritize the part (thus need to split tasks) of tasks, where things are written down, to not forget them and to stop nagging thoughts. The other part of the task can be done later when time permits.'
     ]
-  }
+  })
 
-  'Planning' = {
+  'Planning' = hint({
     ifYes: [
       this['Prioritizing']
     ]
-  }
+  })
 
-  'Planning a day' = {
+  'Planning a day' = hint({
     ifYes: [this['Planning']]
-  }
-  'Planning a life' = {
+  })
+
+  'Planning a life' = hint({
     ifYes: [this['Planning']]
-  }
+  })
 
   'Effectiveness / optimizations' = hint({
     ifYes: [
@@ -241,7 +255,7 @@ export class Questions {
     ]
   })
 
-  'Productivity' = {
+  'Productivity' = hint({
     ifYes: [
       this.Confidence,
       this.Focus,
@@ -252,28 +266,28 @@ export class Questions {
       this['Good decisions'],
       this['Effectiveness / optimizations']
     ]
-  }
+  })
 
-  'Software design' = {
+  'Software design' = hint({
     ifYes: [
       this['Prioritizing'],
     ]
-  }
+  })
 
-  'Solving problems' = {
+  'Solving problems' = hint({
     ifYes: [
       'Use lateral thinking',
       'Try to see the problem in a broader context, avoid tunnel vision; perhaps the real/root problems are somewhere else and/or I\'m using incorrect reference point in judging the situation',
       'Look for root-causes (root cause analysis); use the N-whys technique.',
       'Watch out for false assumptions which make you miss the actual cause of the problem',
     ]
-  }
+  })
 
-  'Debugging' = {
+  'Debugging' = hint({
     ifYes: [
       this['Solving problems']
     ]
-  }
+  })
 
   'Software development' = hint({
     ifYes: [
@@ -292,8 +306,26 @@ export class Questions {
       {
         text: 'Watch out for triggering other people\'s "status threat"',
         when: '2018-10-06 22:46',
+      },
+      {
+        text: 'Allocate effort on bonding between people',
+        example: 'play games together; example: odkrywanki; '
       }
     ]
+  })
+
+  'Avoid over-eating' = hint({
+    ifYes: [
+      'Avoid thinking stressful thoughts while eating'
+    ]
+  })
+
+  'Reduce calories consumption' = hint({
+    ifYes: [
+      this['Avoid over-eating'],
+      'Drink water while at the computer, instead of juice',
+    ]
+
   })
 
 }
