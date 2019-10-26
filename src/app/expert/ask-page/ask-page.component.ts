@@ -3,6 +3,7 @@ import { questionsProblemsWishes } from '../../core/hints';
 import {
   LiHint,
   } from '../../core/hints_problems_questions.data';
+import { HintFinder } from './HintFinder';
 
 @Component({
   selector: 'app-ask-page',
@@ -10,6 +11,8 @@ import {
   styleUrls: ['./ask-page.component.css']
 })
 export class AskPageComponent implements OnInit {
+
+  textField = ''
 
   // filteredProblems = [
   //   {
@@ -24,9 +27,15 @@ export class AskPageComponent implements OnInit {
   filteredProblems: LiHint[] = Object.values(questionsProblemsWishes)
   isExpandAll = true /* better for debugging */
 
+  hintFinder = new HintFinder()
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  onChangeFilterText(ev) {
+    this.filteredProblems = this.hintFinder.filter(ev)
+    console.log('ev', ev)
+  }
 }

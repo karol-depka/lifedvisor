@@ -197,7 +197,7 @@ export class Questions {
 // Are you consciously breathing deeply
 // (fight or flight)
 
-// 2018-09-15 15:29 state of flow (not too little arousal, not too little)
+// 2018-09-15 15:29 state of flow (not too little arousal, not too little) ; "be in the zone" ; for productivity
 // 2018-09-18 22:03 mindfulness
 
 // 2018-09-18 22:12 I am confused:
