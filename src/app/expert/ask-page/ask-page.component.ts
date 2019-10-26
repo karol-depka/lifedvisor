@@ -35,7 +35,7 @@ export class AskPageComponent implements OnInit {
   }
 
   onChangeFilterText(ev) {
-    this.filteredProblems = this.hintFinder.filter(ev)
+    this.filteredProblems = this.hintFinder.getFilteredHints(ev)
     console.log('ev', ev)
   }
 }

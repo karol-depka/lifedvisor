@@ -31,7 +31,7 @@ export class LiHint {
   ) {}
 }
 
-export function hint(param?: LiHint) {
+export function hint(param?: LiHint): LiHint {
   return param || {}
 }
 
@@ -139,7 +139,8 @@ export class Questions {
     ifYes: [
       `Delay gratification, don't DENY gratification`,
       this['Utilize and build virtuous circles (and avoid VICIOUS circles, no X -> no Y -> etc): motivation/dopamine -> discipline/perseverance -> progress -> self esteem, excitement, confidence -> more motivation'],
-      this['Motivation'] /* Does discipline require motivation ? */
+      this['Motivation'] /* Does discipline require motivation ? */,
+      `In order to have discipline, You need motivation` /* example of inclusion / connector hint/text */,
     ]
   })
 
