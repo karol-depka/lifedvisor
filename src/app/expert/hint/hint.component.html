@@ -1,15 +1,27 @@
 <div class="card">
 
-  <p>
+  <h5>
     Wish: {{wish.text || wish}}
-  </p>
+  </h5>
 
   <p *ngIf="wish.example">
     Example: {{wish.example}}
   </p>
 
-  <p *ngIf="wish.example">
-    Comments: {{wish.example}}
+  <ol *ngIf="wish.benefits">
+    Benefits:
+    <li *ngFor="let benefit of wish.benefits">
+      {{benefit}}
+    </li>
+  </ol>
+
+
+  <!--  <app-hint-benefits-->
+<!--    -->
+<!--  ></app-hint-benefits>-->
+
+  <p *ngIf="wish.comments">
+    <!--Comments: -->{{wish.comments}}
   </p>
 
       <div class="btn-group btn-group-toggle">
@@ -34,6 +46,12 @@
         </div>
 
       </div>
+
+  <div
+    *ngIf="wish.source; let source"
+  >
+    Source: {{source}}
+  </div>
 
 </div>
 

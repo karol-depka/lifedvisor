@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { questionsProblemsWishes } from '../../core/hints';
-import {
-  LiHint,
-  } from '../../core/hints_problems_questions.data';
+import { LiHint } from '../../shared-with-testcafe/Hint';
+import { questionsProblemsWishes } from '../../shared-with-testcafe/hints';
 import { HintFinder } from './HintFinder';
 
 @Component({
@@ -35,7 +33,9 @@ export class AskPageComponent implements OnInit {
   }
 
   onChangeFilterText(ev) {
-    this.filteredProblems = this.hintFinder.getFilteredHints(ev)
-    console.log('ev', ev)
+    // console.log('ev', ev)
+    if ( typeof ev === 'string' ) {
+      this.filteredProblems = this.hintFinder.getFilteredHints(ev)
+    }
   }
 }

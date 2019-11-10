@@ -1,0 +1,41 @@
+{
+  "compileOnSave": false,
+
+//  "files": [
+//    "testSrc/*.ts",
+//    "../src/app/shared-with-testcafe/",
+//  ],
+//  "include": [
+//    "testcafe/testSrc/**/*.ts",
+//    "src/shared-with-testcafe/**/*.ts",
+//  ],
+//  "exclude": [
+//    "**/*.spec.ts"
+//  ],
+
+
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "strict": true,
+    "noUnusedLocals": true,
+
+    "outDir": "./dist/out-tsc",
+//    "baseUrl": ".",
+    "baseUrl": "testSrc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es6",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2016",
+      "dom"
+    ],
+  }
+}

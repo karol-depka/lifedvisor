@@ -2,8 +2,8 @@ import {
   Dict,
   getDictionaryValuesAsArray,
 } from '../utils/dictionary-utils';
+import { LiHint } from './Hint';
 import { questionsProblemsWishes } from './hints';
-import { LiHint } from './hints_problems_questions.data';
 
 export class QuestionsProblemsWishes {
 

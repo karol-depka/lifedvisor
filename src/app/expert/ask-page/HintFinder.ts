@@ -1,4 +1,8 @@
-import { QuestionsProblemsWishes } from '../../core/QuestionsProblemsWishes';
+import { QuestionsProblemsWishes } from '../../shared-with-testcafe/QuestionsProblemsWishes';
+
+export function textMatch(searchIn: string, searched: string) {
+  return searchIn && searchIn.toLowerCase().match(searched.toLowerCase())
+}
 
 export class HintFinder {
 
@@ -10,9 +14,12 @@ export class HintFinder {
 
   getFilteredHints(filterText: string) {
     return this.questionsProblemsWishes.asArray.filter(hint => {
-      console.log('hint to filter', hint)
-      return hint.text.toLowerCase().match(filterText.toLowerCase())
-      // return matches(filterText)
+      // console.log('hint to filter', hint)
+      return (
+        textMatch(hint.text, filterText) ||
+        textMatch(hint.byLang && hint.byLang.es, filterText) ||
+        textMatch(hint.byLang && hint.byLang.pl, filterText)
+      )
     })
   }
 }

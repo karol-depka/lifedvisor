@@ -7,6 +7,7 @@ import {
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AskPageComponent } from './ask-page/ask-page.component';
 import { HintComponent } from './hint/hint.component';
+import { HintBenefitsComponent } from './hint/hint-benefits/hint-benefits.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { HintComponent } from './hint/hint.component';
   ],
   declarations: [
     AskPageComponent,
-    HintComponent
+    HintComponent,
+    HintBenefitsComponent
   ],
   exports: [
     AskPageComponent,

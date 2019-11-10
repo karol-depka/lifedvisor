@@ -3,7 +3,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { LiHint } from '../../core/hints_problems_questions.data';
+import { LiHint } from '../../shared-with-testcafe/Hint';
 
 /** Hint, Wish, Problem */
 @Component({
