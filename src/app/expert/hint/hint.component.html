@@ -1,57 +1,70 @@
-<div class="card">
+<div [ngClass]="{'card': true, matchesFilter: matchesFilter()}"
+     style="padding: 5px; margin: 5px"
+>
+  <div
+    [ngClass]="{'onlyVisibleToShowChild': isOnlyVisibleToShowChild }"
+  >
+    <h5>
+      <!--Wish: --> {{wish.title || wish.text || wish}}
+    </h5>
+    <p>{{wish.subTitle}}</p>
 
-  <h5>
-    Wish: {{wish.text || wish}}
-  </h5>
+    <p *ngIf="wish.example">
+      Example: {{wish.example}}
+    </p>
 
-  <p *ngIf="wish.example">
-    Example: {{wish.example}}
-  </p>
+    <ol *ngIf="wish.benefits">
+      Benefits:
+      <li *ngFor="let benefit of wish.benefits">
+        {{benefit}}
+      </li>
+    </ol>
 
-  <ol *ngIf="wish.benefits">
-    Benefits:
-    <li *ngFor="let benefit of wish.benefits">
-      {{benefit}}
-    </li>
-  </ol>
+    <!--  <app-hint-benefits-->
+    <!--    -->
+    <!--  ></app-hint-benefits>-->
 
+    <p *ngIf="wish.comments">
+      <!--Comments: -->{{wish.comments}}
+    </p>
 
-  <!--  <app-hint-benefits-->
-<!--    -->
-<!--  ></app-hint-benefits>-->
+    <div
+      *ngIf="wish.source; let source"
+    >
+      Source: {{source}}
+    </div>
+    <div *ngIf="wish.sources; let sources">
+      Sources:
+      <ul>
+        <li *ngFor="let source of sources">{{source.name || source.title || source.id || source}}</li>
+      </ul>
+    </div>
+  </div>
 
-  <p *ngIf="wish.comments">
-    <!--Comments: -->{{wish.comments}}
-  </p>
-
-      <div class="btn-group btn-group-toggle">
-        <label     *ngIf="wish.ifYes"
-                   class="btn-primary" ngbButtonLabel>
-          <input type="checkbox" ngbButton [(ngModel)]="isExpanded">Yes
-        </label>
-      </div>
-
-      <div
-        *ngIf="isExpanded"
-      >
-        <div
-          style="margin-left: 3rem"
-          *ngFor="let child of wish.ifYes"
-        >
-          <app-hint
-            [wish]="child"
-            [isExpanded]="isExpanded"
-          ></app-hint>
-
-        </div>
-
-      </div>
+  <div class="btn-group btn-group-toggle" style="flex-grow: 0">
+    <label  *ngIf="wish.ifYes"
+            class="btn-dark" ngbButtonLabel>
+      <input type="checkbox" ngbButton [(ngModel)]="isExpanded">How to improve?<!--Yes-->
+    </label>
+  </div>
 
   <div
-    *ngIf="wish.source; let source"
+    *ngIf="isExpanded"
   >
-    Source: {{source}}
+    <div
+      class="hint-children"
+      *ngFor="let childWish of wish.ifYes"
+    >
+      <app-hint
+        [hidden]="! (isVisibleViaFilter(childWish) || ancestorMatchesFilter || matchesFilter())"
+        [wish]="childWish"
+        [ancestorMatchesFilter]="matchesFilter() || ancestorMatchesFilter"
+        [filter]="filter"
+        [isExpanded]="isExpanded"
+      ></app-hint>
+    </div>
   </div>
+
 
 </div>
 

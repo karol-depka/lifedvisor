@@ -1,3 +1,7 @@
+import { HintSource } from './HintSource';
+
+export type Filter = string
+
 export class LiHintInclusion {
   /* TODO: examples in the inclusion context; e.g. prioritizing things-hardest-to-change in the context of software design
    * general principle is the same, and the user might have already learned the principle, but the contextual examples might clarify and make the connections stronger
@@ -10,14 +14,25 @@ export class LiHintInclusion {
    */
 }
 
+export class LiHintCommon {
+
+}
+
+export class LiHintDeclaration {
+
+}
+
 export class LiHint {
   id?: string
   constructor(
     public ifYes?: (LiHint | string)[],
     public byLang?: { es?: string, pl?: string },
-    /** TODO: rename to title */
+    public title?: string /* will be non-optional when I finish removing `text` */,
+    /** TODO: split into title and contents */
     public text?: string,
+    public subTitle?: string,
     public source?: string,
+    public sources?: HintSource [],
     public when?: string,
     public example?: string /* | LiHintInclusion []*/,
     public examples?: string[] /* | LiHintInclusion []*/,

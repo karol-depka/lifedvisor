@@ -8,6 +8,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AskPageComponent } from './ask-page/ask-page.component';
 import { HintComponent } from './hint/hint.component';
 import { HintBenefitsComponent } from './hint/hint-benefits/hint-benefits.component';
+import { RationaleComponent } from './ask-page/rationale/rationale.component';
+import { IkigaiDiagramComponent } from './ask-page/rationale/ikigai-diagram/ikigai-diagram.component';
+import { GrowthDiagramComponent } from './ask-page/rationale/growth-diagram/growth-diagram.component';
 
 @NgModule({
   imports: [
@@ -19,7 +22,10 @@ import { HintBenefitsComponent } from './hint/hint-benefits/hint-benefits.compon
   declarations: [
     AskPageComponent,
     HintComponent,
-    HintBenefitsComponent
+    HintBenefitsComponent,
+    RationaleComponent,
+    IkigaiDiagramComponent,
+    GrowthDiagramComponent
   ],
   exports: [
     AskPageComponent,

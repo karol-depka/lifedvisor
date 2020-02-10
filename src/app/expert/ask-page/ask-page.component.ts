@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+} from '@angular/core';
+import { debounceTime } from 'rxjs/operators';
 import { LiHint } from '../../shared-with-testcafe/Hint';
 import { questionsProblemsWishes } from '../../shared-with-testcafe/hints';
 import { HintFinder } from './HintFinder';
@@ -11,6 +16,7 @@ import { HintFinder } from './HintFinder';
 export class AskPageComponent implements OnInit {
 
   textField = ''
+  textFieldDummy = ''
 
   // filteredProblems = [
   //   {
@@ -23,11 +29,19 @@ export class AskPageComponent implements OnInit {
   //
   //
   filteredProblems: LiHint[] = Object.values(questionsProblemsWishes)
-  isExpandAll = true /* better for debugging */
+  isExpandAll = false /* better for debugging */
+
+  filterToThrottle$ = new EventEmitter<string>()
 
   hintFinder = new HintFinder()
 
-  constructor() { }
+  constructor() {
+    this.filterToThrottle$.pipe(
+      debounceTime(100)
+    ).subscribe(value => {
+      this.textField = value
+    })
+  }
 
   ngOnInit() {
   }
@@ -35,7 +49,12 @@ export class AskPageComponent implements OnInit {
   onChangeFilterText(ev) {
     // console.log('ev', ev)
     if ( typeof ev === 'string' ) {
-      this.filteredProblems = this.hintFinder.getFilteredHints(ev)
+      // this.filteredProblems = this.hintFinder.getFilteredHints(ev)
+      this.filterToThrottle$.emit(ev)
     }
+  }
+
+  isVisibleViaFilter(wish: LiHint| string) {
+    return this.hintFinder.isVisibleViaFilter(wish, this.textField)
   }
 }

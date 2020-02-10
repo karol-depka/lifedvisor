@@ -1,38 +1,29 @@
 
-This app helps you get to <b>root causes</b> of problems and offers solutions.
-
-<p>Describe your <b>problem</b> or <b>wish</b> and this app will give You hints</p>
-<p>(for example "I have low motivation")</p>
-
-<p>Think some of them are too obvious?</p> <!-- TODO: ion card -->
-<p>No problem, the goal is also to memorize, <b>internalize</b> them and reflect on them, force awareness of them. Drill them into the brain :). As we tend to forget things.</p>
-<p>A for of meditation, contemplation, mantra.</p>
-<p>You can also treat it as a <b>check-list</b>, to avoid forgetting even the obvious hints.</p>
-<p>It also serves to hold us accountable to really follow the rules that we know of and agree with.</p>
+<app-rationale
+></app-rationale>
 
 <!--<input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search"/>-->
-<label for="askText">Describe your problem or wish:</label>
+<label for="askText">Describe your problem or wish, to get hints:</label>
 <input
   (change)="onChangeFilterText($event)" id="askText" type="text"
-  [ngModel]="textField"
+  [(ngModel)]="textFieldDummy"
   (ngModelChange)="onChangeFilterText($event)"
   class="form-control"
 />
 
-<!--<div style="background-color: aquamarine; margin: 1rem" *ngFor="let problem of []">-->
-<!--  Problem: {{problem.text}}-->
-<!--</div>-->
-
-<div class="btn-group btn-group-toggle">
-  <label class="btn-primary" ngbButtonLabel>
+<div class="btn-group btn-group-toggle"
+     style="margin: 5px;"
+>
+  <label class="btn-dark" ngbButtonLabel>
     <input type="checkbox" ngbButton [(ngModel)]="isExpandAll">Expand All
   </label>
 </div>
 
-<!--{{filteredProblems|json}}-->
-
 <ng-container *ngFor="let problem of filteredProblems">
+
   <app-hint
+    [hidden]="! isVisibleViaFilter(problem)"
+    [filter]="textField"
     [wish]="problem"
     [isExpanded]="isExpandAll"
   ></app-hint>

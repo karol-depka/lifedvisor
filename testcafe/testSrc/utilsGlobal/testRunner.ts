@@ -1,5 +1,5 @@
 
-export const numRepetitions = 20
+export const numRepetitions = 1
 
 let runNum: number | null = null
 

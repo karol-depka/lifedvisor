@@ -22,7 +22,7 @@
     "noUnusedLocals": true,
 
     "outDir": "./dist/out-tsc",
-//    "baseUrl": ".",
+//    "baseUrl": "./asdf",
     "baseUrl": "testSrc",
     "sourceMap": true,
     "declaration": false,

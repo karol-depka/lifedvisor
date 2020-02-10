@@ -3,7 +3,11 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { LiHint } from '../../shared-with-testcafe/Hint';
+import {
+  Filter,
+  LiHint,
+} from '../../shared-with-testcafe/Hint';
+import { HintFinder } from '../ask-page/HintFinder';
 
 /** Hint, Wish, Problem */
 @Component({
@@ -13,12 +17,21 @@ import { LiHint } from '../../shared-with-testcafe/Hint';
 })
 export class HintComponent implements OnInit {
 
-
   @Input()
   isExpanded = false
 
   @Input()
+  filter: Filter = ``
+
+  @Input()
   wish: LiHint
+
+  @Input()
+  ancestorMatchesFilter: LiHint
+
+  get isOnlyVisibleToShowChild () {
+    return ! ( this.matchesFilter() || this.ancestorMatchesFilter )
+  }
   //   = {
   //   text: 'Avoid overeating',
   //   children: [
@@ -39,5 +52,14 @@ export class HintComponent implements OnInit {
 
   onClickYes() {
     this.isExpanded = true
+  }
+
+  matchesFilter() {
+    // return true
+    return new HintFinder().matchesFilter(this.wish, this.filter)
+  }
+
+  isVisibleViaFilter(wish: LiHint| string) {
+    return new HintFinder().isVisibleViaFilter(wish, this.filter)
   }
 }

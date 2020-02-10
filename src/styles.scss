@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*[hidden] {*/
+/*  display: none;*/
+/*}*/
+
+//@import "styles/_variables.scss";
+@import "~bootstrap/scss/bootstrap"; // import bootstrap has to be in-between _variables.scss and _bootswatch.scss - https://bootswatch.com/help/
+//@import "styles/_bootswatch.scss";
+
+#askText {
+  color: #00bc8c;
+  background-color: black;
+}
+
+.card:not(.matchesFilter){
+  background-color: #444444 !important;
+}

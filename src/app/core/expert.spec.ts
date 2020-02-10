@@ -14,3 +14,5 @@ describe('expert', () => {
     'momentum',
   ]);
 });
+
+// more advanced: ask 'doubts about business' -> would search within parents and children

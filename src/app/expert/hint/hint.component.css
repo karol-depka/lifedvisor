@@ -1,0 +1,11 @@
+.onlyVisibleToShowChild {
+  opacity: 30%;
+}
+
+.matchesFilter {
+  background-color: darkolivegreen;
+}
+
+.hint-children {
+  margin-left: 0.5rem;
+}
