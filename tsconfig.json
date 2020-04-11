@@ -23,5 +23,9 @@
     "strictNullChecks": true,
     "noImplicitAny" : true,
     "strict": true,
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": true,
+    "strictInjectionParameters": true
   }
 }
