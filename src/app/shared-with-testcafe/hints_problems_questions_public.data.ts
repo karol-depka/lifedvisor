@@ -198,12 +198,14 @@ export class Questions {
       es: 'pereza; no tengo ganas',
     },
     ifYes: [
+      `Sampling of future bigger pleasures.` /* TODO: for balance between productivity and fun */,
       `Overcome doubts via thinking`,
+      `Create positive associations with the things You would like be motivated towards.`,
       `As Confucius said: "Choose a job you love, and you will never have to work a day in your life."`,
       '#Visualise the benefits, the desired state',
       'Why should I be motivated to do what I think I should do? Because everything else is just *inferior*.',
       /* FIXME: 'Fun/dopamine' */
-      { text: 'Distinguish between "Have to" and "Want to"',
+      { text: 'Distinguish between "Have to" and "Want to" (locus of control)',
         example: `including company invoices; I don't have to do this`
       },
       this['Utilize and build virtuous circles (and avoid VICIOUS circles, no X -> no Y -> etc)'],
@@ -371,6 +373,10 @@ export class Questions {
           'so the real cost is 30 EUR, not 100EUR (making the decision easier); and the benefit is e.g. saved time/emotion or other resources.',
       },
       {
+        title: `Think of higher more general principles`,
+        subTitle: `They could help You in making a specific decision`,
+      },
+      {
         text: 'consider the alternatives',
         ifYes: [
           'Look also at the consequences of inaction or not making the decision',
@@ -531,19 +537,32 @@ export class Questions {
   'Productivity' = hint({
     ifYes: [
       { title: `Motivation for productivity`,
+
         ifYes: [
-          { title: `Get a sense of urgency`,
-            subTitle: `Time is passing. The only way to deal with this is to use the time better.`},
+          { title: `Get out of your own way`, subTitle: `Stay calm and let Your subconscious mind to its best job as opposed to being anxious about results. You can only directly control the actions/effort, not the result itself.`},
+          {
+            title: `Get a sense of urgency`,
+            subTitle: `Time is passing. The only way to deal with this is to use the time better.`,
+            ifYes: [
+              `User time-tracker with time-boxing and time-left/overtime notification.`,
+              { title: `Know when things are good enough.` /* for search keywords: excessive self-criticism */,
+                ifYes: [
+                  { title: `Ask Yourself: would You buy this product? Would people buy this product? Would they like it already? Probably. So let's move to the next item...` },
+                  { title: `Ask Yourself: if You saw (without looking too much into tiny details) this thing done by someone else, would You like it? Most often we get too self-critical when looking at our own work.` },
+                ],
+              },
+            ],
+          },
           { title: `Productivity is really the only non-random way to do things` },
           { title: `Competitiveness`,
             subTitle: `I want to do it better! It's a foundation of a strong system. It lifts everyone up.`,
             ifYes: [
               { title: `Overcome objections (conscious or unconscious) to competitiveness` /* this could be a field `objections` */,
                 ifYes: [
-                  { title: `Isn't competing bad?`,
-                    subTitle: `As long as we don't do anything unethical, competition is actually good.`
+                  { title: `Objection: Isn't competing bad/aggressive/brutal ?`,
+                    subTitle: `As long as we don't do anything unethical, competition is actually good. Friendly competition is possible.`
                   },
-                  { title: `Isn't cooperating better than competing?`,
+                  { title: `Objection: Isn't cooperating better than competing?`,
                     subTitle: `One does not exclude the other.`
                   }
                 ],
@@ -553,6 +572,8 @@ export class Questions {
           { title: `Visualise the benefits of productivity`, subTitle: `You are going to feel better, stronger, a better person. There will be useful outcomes. You can help others.` }
         ],
       },
+      { title: `Use the best tool for the job.`},
+      { title: `Let focus on results (ends) guide You, instead of dwelling on means.`},
       this.Confidence,
       this.Focus,
       this.Motivation,
@@ -795,16 +816,25 @@ export class Questions {
   })
 
   Cravings = problem({
-    text: `Dealing with cravings (in general)`,
+    text: `Dealing with cravings / urges (in general)`,
     ifYes: [
+      `Surfing the urge`,
       this['Managing gratification'],
       `Realise that You can take pleasure from just sitting down / lying down and relaxing and calming and thinking / reflecting / visualising / dreaming without the need of binging on cravings`,
+      /* duplicate? */`Just relax and enjoy just being (as opposed to the tension created by the urge)`,
+      `Satisfy other instincts / cravings, e.g. creativity, hobbies, learning things`,
     ]
   })
 
   // Worry:
   // Frustrated
   // -> Reach a state of flow
+  Frustrations = hint({
+    title: `Dealing with frustrations / anger`,
+    ifYes: [
+      `A person is as big as the things that can make the person angry/frustrated`
+    ]
+  })
   //
   'Cravings for computer games' = hint({
     ifYes: [
@@ -830,8 +860,11 @@ export class Questions {
         ]
       },
       'Play the game that is life. But prefer to play against previous versions of yourself, and/or against obstacles',
+      'There are game-like aspects and tasks in all activities. Use it to Your advantage to gradually replace your vices.',
+      `Learn new things for excitement. The Excitement is double: 1. new things; 2. feeling like becoming a more skilled resourceful person. And don't be afraid to spend money & time on the new activities - as You would have spent money and time on your vices anyway, right?`,
       this['Make everyday real life more enjoyable (so as to avoid escapism and low mood)'],
-      `Hide your gaming devices to stop them from tempting/distracting and to introduce a barrier of time/effort.`
+      `Hide your gaming devices to stop them from tempting/distracting and to introduce a barrier of time/effort.`,
+      `Think how playing games is really an infinite chase down an infinite rabbit hole that is also a tar pit trap and fly paper of fake dopamine.`,
     ]
 
   })
@@ -872,12 +905,14 @@ export class Questions {
       `first do dinner before desert`,
       `try przyjemne z pożytecznym so that You dont feel guilty`,
       `do not sacrifice other things to do entertainment`,
+      `Maintain a list of fun-yet-useful activities You can do` /* e.g. my list-tree of such activities in OrYoL 2020-04-03, 05:59*/,
     ],
   })
 
   'Feel bad' = hint({
     ifYes: [
       this['Guilt-free entertainment (fun)'],
+      `Progress on a worthwhile goal`,
     ]
   })
 
@@ -1045,8 +1080,12 @@ export class Questions {
   })
 
   'Procrastination' = problem({
+    /*  search keywords: 'don't feel like, nie chce mi się, no tengo ganas' */
     ifYes: [
+      this['Motivation'],
       `Consider and visualise the positive and negative consequences of doing and not doing the thing You should do. Focus on the positive, to keep dopamine level up.`,
+      { title: `Overcoming procrastination for a given activity, could be a task on its own.`, subTitle: `So feel free to allocate&spend time, energy, money on it ` },
+      { title: `It's okay to ask why`, subTitle: `But don't ask "why" too many times`}
     ]
   })
 
@@ -1118,6 +1157,7 @@ export class Questions {
       { title: `When You are becoming better than average, don't be afraid of becoming a bit different from most people.`,
         subTitle: `Don't be afraid to be a bit in your own (positive) bubble.`
       },
+      `Work on Yourself at least as hard as on your work.`,
       {
         title: `Acknowledge that some outcomes in life are better than others`,
       }
@@ -1129,6 +1169,8 @@ export class Questions {
       `Either decide to not want the given thing, or say to yourself that one day you will obtain the given thing / quality / situation (in which case the envy is motivating). Instead of hating the person. (special case of accept or overcome)`
     ]
   })
+
+  'How to not get bored at home (Coronavirus quarantine)' = {} /* TODO */
 
   /* Root */
   'Have a great life (root)' = problem({

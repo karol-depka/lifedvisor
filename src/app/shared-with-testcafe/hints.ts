@@ -1,5 +1,5 @@
 import { LiHint } from './Hint';
-import { Questions } from './hints_problems_questions.data';
+import { Questions } from './hints_problems_questions_public.data';
 import { PersonalHints } from './hints_problems_questions_personal.data';
 
 function processQuestions(questions: Questions) {
