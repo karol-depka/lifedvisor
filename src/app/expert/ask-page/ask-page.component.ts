@@ -54,7 +54,7 @@ export class AskPageComponent implements OnInit {
     }
   }
 
-  isVisibleViaFilter(wish: LiHint| string) {
+  isVisibleViaFilter(wish: LiHint | string) {
     return this.hintFinder.isVisibleViaFilter(wish, this.textField)
   }
 }

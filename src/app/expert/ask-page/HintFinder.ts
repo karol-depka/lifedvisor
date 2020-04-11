@@ -5,7 +5,8 @@ import {
 import { QuestionsProblemsWishes } from '../../shared-with-testcafe/QuestionsProblemsWishes';
 import { escapeRegExp } from '../../utils/regexp.utils';
 
-export function textMatch(searchIn: string, searched: string) {
+export function textMatch(searchIn: string | null | undefined, searched: string) {
+  searchIn = searchIn || ''
   searched = escapeRegExp(searched)
   let strings = searched.split(' ')
   return strings.every(string => !! (searchIn && searchIn.toLowerCase().match(string.trim().toLowerCase())))
@@ -52,7 +53,8 @@ export class HintFinder {
   }
 
   public isVisibleViaFilter(wish: LiHint | string, filter: Filter) {
+    const hint = wish as LiHint;
     return this.matchesFilter(wish, filter)
-      || (wish as LiHint).ifYes && (wish as LiHint).ifYes.some(childWish => !! this.isVisibleViaFilter(childWish, filter))
+      || hint.ifYes && hint.ifYes.some(childWish => !! this.isVisibleViaFilter(childWish, filter))
   }
 }

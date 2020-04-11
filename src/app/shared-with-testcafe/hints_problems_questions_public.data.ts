@@ -1080,7 +1080,7 @@ export class Questions {
   })
 
   'Procrastination' = problem({
-    /*  search keywords: 'don't feel like, nie chce mi się, no tengo ganas' */
+    /*  search keywords: 'don't feel like, nie chce mi się, no tengo ganas; laziness; lazy' */
     ifYes: [
       this['Motivation'],
       `Consider and visualise the positive and negative consequences of doing and not doing the thing You should do. Focus on the positive, to keep dopamine level up.`,
