@@ -24,10 +24,10 @@ export class HintComponent implements OnInit {
   filter: Filter = ``
 
   @Input()
-  wish: LiHint
+  wish!: LiHint
 
   @Input()
-  ancestorMatchesFilter: LiHint
+  ancestorMatchesFilter?: LiHint
 
   get isOnlyVisibleToShowChild () {
     return ! ( this.matchesFilter() || this.ancestorMatchesFilter )

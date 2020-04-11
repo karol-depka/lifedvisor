@@ -19,6 +19,7 @@
     ],
     // ======= Strictness / checks:
     "strictNullChecks": true,
-    "noImplicitAny" : true
+    "noImplicitAny" : true,
+    "strict": true,
   }
 }
