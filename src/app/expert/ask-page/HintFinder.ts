@@ -9,7 +9,7 @@ export function textMatch(searchIn: string | null | undefined, searched: string)
   searchIn = searchIn || ''
   searched = escapeRegExp(searched)
   let strings = searched.split(' ')
-  return strings.every(string => !! (searchIn && searchIn.toLowerCase().match(string.trim().toLowerCase())))
+  return strings.every(string => !! (searchIn ?. toLowerCase().match(string.trim().toLowerCase())))
   // for ( let string of strings ) {
   //   const isMatching =
   //   if ( isMatching ) {
@@ -47,8 +47,8 @@ export class HintFinder {
       textMatch(hint.text, filter) ||
       textMatch(hint.subTitle, filter) ||
       textMatch(hint.comments, filter) ||
-      textMatch(hint.byLang && hint.byLang.es, filter) ||
-      textMatch(hint.byLang && hint.byLang.pl, filter)
+      textMatch(hint.byLang ?. es, filter) ||
+      textMatch(hint.byLang ?. pl, filter)
     );
   }
 
