@@ -34,7 +34,7 @@ export class HintFinder {
     })
   }
 
-  public matchesFilter(hint: LiHint | string, filter?: Filter) {
+  public matchesFilter(hint: LiHint | string, filter?: Filter): boolean {
     if ( ! filter ) {
       return true
     }
@@ -52,9 +52,9 @@ export class HintFinder {
     );
   }
 
-  public isVisibleViaFilter(wish: LiHint | string, filter: Filter) {
+  public isVisibleViaFilter(wish: LiHint | string, filter: Filter): boolean {
     const hint = wish as LiHint;
     return this.matchesFilter(wish, filter)
-      || hint.ifYes && hint.ifYes.some(childWish => !! this.isVisibleViaFilter(childWish, filter))
+      || !! ( hint.ifYes && hint.ifYes.some(childWish => this.isVisibleViaFilter(childWish, filter)) )
   }
 }

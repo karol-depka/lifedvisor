@@ -46,7 +46,7 @@ export class AskPageComponent implements OnInit {
   ngOnInit() {
   }
 
-  onChangeFilterText(ev) {
+  onChangeFilterText(ev: any) {
     // console.log('ev', ev)
     if ( typeof ev === 'string' ) {
       // this.filteredProblems = this.hintFinder.getFilteredHints(ev)

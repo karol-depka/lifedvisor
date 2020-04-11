@@ -16,14 +16,18 @@ export function getDictionaryValuesAsArray<TItem>(dictionary: Dict<TItem>): TIte
 }
 
 
-export function setIdsFromKeys<TItem>(dictionary: Dict<TItem>, idKeyName: string = 'id'): Dict<TItem> {
+export function setIdsFromKeys<TItem, TItemWithId extends TItem & {id: string} = TItem & {id: string}>(
+  dictionary: Dict<TItem>,
+  // idKeyName: string = 'id'
+): Dict<TItemWithId> {
   // idKeyName = idKeyName || 'id';
   let ownPropertyNames = Object.getOwnPropertyNames(dictionary);
   // console.log('setIdsFromKeys ownPropertyNames', ownPropertyNames);
   for (const id of ownPropertyNames) {
-    const curExp = dictionary[id];
-    curExp[idKeyName] = id;
+    const curExp = dictionary[id] as any as TItemWithId
+    // curExp[idKeyName] = id;
+    curExp.id = id;
     // console.log('setIdsFromKeys', id, curExp);
   }
-  return dictionary;
+  return dictionary as Dict<TItemWithId>
 }
