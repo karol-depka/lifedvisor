@@ -11,7 +11,7 @@ import { HintFinder } from '../ask-page/HintFinder';
 
 /** Hint, Wish, Problem */
 @Component({
-  selector: 'app-hint',
+  selector: 'app-hint[filter][wish]',
   templateUrl: './hint.component.html',
   styleUrls: ['./hint.component.css']
 })
@@ -24,10 +24,10 @@ export class HintComponent implements OnInit {
   filter: Filter = ``
 
   @Input()
-  wish!: LiHint
+  wish!: LiHint | string
 
   @Input()
-  ancestorMatchesFilter?: LiHint
+  ancestorMatchesFilter?: boolean
 
   get isOnlyVisibleToShowChild () {
     return ! ( this.matchesFilter() || this.ancestorMatchesFilter )
@@ -44,10 +44,17 @@ export class HintComponent implements OnInit {
   //   ]
   // }
 
+  static hintsCount = 0
+  static hintsCountStrings = 0
 
   constructor() { }
 
   ngOnInit() {
+    // console.log('hint', HintComponent.hintsCount ++, this.wish)
+
+    if ( typeof this.wish === 'string' ) {
+      // console.log('wish is string', HintComponent.hintsCountStrings++)
+    }
   }
 
   onClickYes() {
