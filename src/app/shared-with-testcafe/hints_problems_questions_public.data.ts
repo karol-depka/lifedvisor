@@ -30,6 +30,7 @@ import {
   hint,
   problem,
 } from './Hint';
+import { HintSource } from './HintSource';
 import { sources } from './sources_data';
 
 
@@ -183,7 +184,7 @@ export class Questions {
       {
         text: 'Use stretch goals to improve motivation',
         sources: [
-          'https://charlesduhigg.com/books/smarter-faster-better/',
+          new HintSource('https://charlesduhigg.com/books/smarter-faster-better/'),
         ]
       }
     ]
@@ -199,7 +200,7 @@ export class Questions {
     },
     ifYes: [
       `Sampling of future bigger pleasures.` /* TODO: for balance between productivity and fun */,
-      `Overcome doubts via thinking`,
+      hint({title: `Overcome doubts via thinking`}),
       `Create positive associations with the things You would like be motivated towards.`,
       `As Confucius said: "Choose a job you love, and you will never have to work a day in your life."`,
       '#Visualise the benefits, the desired state',
@@ -1020,6 +1021,7 @@ export class Questions {
   })
 
   'Worry / anxiety' = problem({
+    keywords: ['worried', `worrying too much`, `anxious`],
     ifYes: [
       `Purposeful action is a way to cure worry. Just the act of taking action pushes out worry thought.` +
         `And results of these actions have big probability of reducing/eliminating the worry situation.`,
@@ -1180,6 +1182,8 @@ export class Questions {
       }
     ]
   })
+
+  'Excessive Perfectionism' = problem({})
 
   // coasting
   // chaos
