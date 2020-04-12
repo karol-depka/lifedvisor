@@ -23,9 +23,9 @@ export class LiHintDeclaration {
 }
 
 export class LiHint {
-  id?: string
   constructor(
-    public ifYes?: (LiHint | string)[],
+    public id?: string,
+    public ifYes?: LiHint[],
     public byLang?: { es?: string, pl?: string },
     public title?: string /* will be non-optional when I finish removing `text` */,
     /** TODO: split into title and contents */
@@ -44,8 +44,12 @@ export class LiHint {
   }
 }
 
-export function hint(param?: LiHint): LiHint {
+export function hint(param?: LiHint | string): LiHint {
+  if ( typeof param === 'string' ) {
+    return new LiHint(param)
+  }
   return param || {};
 }
 
 export const problem = hint
+export const wish = hint

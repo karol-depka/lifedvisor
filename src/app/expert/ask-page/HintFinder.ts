@@ -49,6 +49,7 @@ export class HintFinder {
       textMatch(hint.comments, filter) ||
       textMatch(hint.byLang ?. es, filter) ||
       textMatch(hint.byLang ?. pl, filter) ||
+      textMatch(hint.id, filter) ||
       !! hint.keywords ?. some(keyword => textMatch(keyword, filter))
     );
   }

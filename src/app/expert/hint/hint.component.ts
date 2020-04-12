@@ -24,7 +24,7 @@ export class HintComponent implements OnInit {
   filter: Filter = ``
 
   @Input()
-  wish!: LiHint | string
+  wish!: LiHint
 
   @Input()
   ancestorMatchesFilter?: boolean
@@ -52,9 +52,9 @@ export class HintComponent implements OnInit {
   ngOnInit() {
     // console.log('hint', HintComponent.hintsCount ++, this.wish)
 
-    if ( typeof this.wish === 'string' ) {
+    // if ( typeof this.wish === 'string' ) {
       // console.log('wish is string', HintComponent.hintsCountStrings++)
-    }
+    // }
   }
 
   onClickYes() {
