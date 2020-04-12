@@ -39,6 +39,7 @@ export class LiHint {
     public comments?: string,
     public problemText?: string,
     public benefits?: string[],
+    public keywords?: string[],
   ) {
   }
 }
