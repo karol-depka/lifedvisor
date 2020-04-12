@@ -1186,6 +1186,12 @@ export class Questions {
 
   'Excessive Perfectionism' = problem({})
 
+  'Impostor Syndrome' = problem({
+    ifYes: [
+      hint(`Remember that the more we know, the more we know we don't know`),
+    ]
+  })
+
   // coasting
   // chaos
   // negotiation
