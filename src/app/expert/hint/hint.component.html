@@ -36,7 +36,7 @@
     <div *ngIf="wish.sources; let sources">
       Sources:
       <ul>
-        <li *ngFor="let source of sources">{{source.name || source.title || source.id || source}}</li>
+        <li *ngFor="let source of sources">{{source.title || source.id }}</li>
       </ul>
     </div>
   </div>
@@ -49,8 +49,9 @@
   </div>
 
   <div
-    *ngIf="isExpanded"
+    *ngIf="isExpanded && wish.ifYes ?. length"
   >
+    This will help You:
     <div
       class="hint-children"
       *ngFor="let childWish of wish.ifYes"
