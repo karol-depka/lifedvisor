@@ -39,6 +39,7 @@ export class LiHint {
     public comments?: string,
     public problemText?: string,
     public benefits?: string[],
+    /** like Tags in YouTube? - groupings of potential search phrases, as opposed to just keyWORDS? To help improve scoring in algorithm */
     public keywords?: string[],
   ) {
   }
@@ -47,6 +48,11 @@ export class LiHint {
 export function hint(param?: LiHint | string): LiHint {
   if ( typeof param === 'string' ) {
     return new LiHint(param)
+  } else {
+    // TODO: move this check into LiHint self-check method
+    if ( param ?. ifYes ?. some(ifYesEl => ! ifYesEl) ) {
+      window.alert(Error('bad ifYesEl for ' + JSON.stringify(param)))
+    }
   }
   return param || {};
 }
