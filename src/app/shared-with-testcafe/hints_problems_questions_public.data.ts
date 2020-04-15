@@ -39,9 +39,9 @@ export class Questions {
 
   'Relax and do not stress' = problem({
     ifYes: [
-      { text: `While relaxing to Yourself "everything will be fine (one way or another)", instead of "I don't care about anything"`,
+      hint({ text: `While relaxing to Yourself "everything will be fine (one way or another)", instead of "I don't care about anything"`,
         comments: `If You are using "I don't care about anything", You would diminish Your motivation`
-      }
+      }),
     ]
   })
 
@@ -50,17 +50,17 @@ export class Questions {
   'Make everyday real life more enjoyable (so as to avoid escapism and low mood)' = hint({
     ifYes: [
       hint(`Invest the time to make your surroundings clean, neat and functional`),
-      { text: `Invest the time to finish nagging loose ends, instead of trying to escape from them (can swiss-cheese them if too overwhelming)`,
+      hint({ text: `Invest the time to finish nagging loose ends, instead of trying to escape from them (can swiss-cheese them if too overwhelming)`,
         ifYes: [
-          { text: `Find motivation to invest in fix nagging loose ends (even though we think sometimes we should ignore them as fixing them seems like not being a productive activity)`,
+          hint({ text: `Find motivation to invest in fix nagging loose ends (even though we think sometimes we should ignore them as fixing them seems like not being a productive activity)`,
             ifYes: [
-              { text: `Think how nagging loose ends are slowing you down in the long run, like a handbrake.`,
+              hint({ text: `Think how nagging loose ends are slowing you down in the long run, like a handbrake.`,
                 comments: `Like a persistent overhead. They cause annoyance, anxiety, drain energy.`,
-              },
+              }),
             ]
-          }
+          }),
         ]
-      },
+      }),
     ]
   })
 
@@ -93,38 +93,36 @@ export class Questions {
   'Being healthy at office job/computer work' = wish({
     ifYes: [
       hint(`Use standing desk (alternate between different positions)`),
-      { text: `Make breaks and micro-breaks`,
+      hint({ text: `Make breaks and micro-breaks`,
         ifYes: [
           hint(`Use an app that reminds about breaks`),
         ]
-      },
-      { text: `Relax and do not stress while working`,
+      }),
+      hint({ text: `Relax and do not stress while working`,
         ifYes: [
           this['Relax and do not stress']
         ]
-      }
+      }),
     ]
   })
 
   'Success / achievement' = wish({
     ifYes: [
       hint(`Dont confuse activity with achievement`),
-      { text: `Define what success means for You`,
+      hint({ text: `Define what success means for You`,
         ifYes: [
           hint(`Acknowledge certain limitations`),
           hint(`You cannot be a sumo wrestler and ski jumper at the same time.`),
           hint(`Use Ikigai`),
         ]
-      }
+      })
     ]
   })
 
 
-  'Utilize and build virtuous circles (and avoid VICIOUS circles, no X -> no Y -> etc)' = hint(
-    {
-      comments: `motivation/dopamine -> discipline/perseverance -> progress -> self esteem, excitement, confidence -> more motivation`
-    }
-  )
+  'Utilize and build virtuous circles (and avoid VICIOUS circles, no X -> no Y -> etc)' = hint({
+    comments: `motivation/dopamine -> discipline/perseverance -> progress -> self esteem, excitement, confidence -> more motivation`
+  })
 
   /* cross-cutting concern? But can describe in general too */
   'Progress' = hint({
@@ -141,10 +139,10 @@ export class Questions {
     ifYes: [
       this['Utilize and build virtuous circles (and avoid VICIOUS circles, no X -> no Y -> etc)'],
       this.Progress,
-      {
+      hint({
         title: 'Have a confident body language and posture',
         subTitle: `(body posture and movement can affect the mind/mood)`,
-      },
+      }),
       hint(`"Fake it till You make it" (otherwise You can end up with a chicken&egg problem). But be careful to not end up unethical.`),
     ]
   })
@@ -160,23 +158,23 @@ export class Questions {
     when: '2018-10-02 22:09',
     ifYes: [
       this['Utilize and build virtuous circles (and avoid VICIOUS circles, no X -> no Y -> etc)'],
-      {
+      hint({
         text: 'Make sure to not make too long breaks between working (and progress, even if small progress) on mayor goals and using major skills, to keep self-esteem up',
         example: '2018-10-02 22:10 working on TopicFriends/LifeDvisor'
-      },
-      {
+      }),
+      hint({
         when: '2018-10-03 22:41',
         text: 'Play a game competing against yourself (previous attempts), it will raise your feeling of status. Whereas competing against others can have negative consequences in the form of a threat of lowering their status.',
         source: '"Your Brain At Work" audiobook)'
-      },
-      {
+      }),
+      hint({
         when: '2019-07-26, 14:55',
         text: 'Recall what I have achieved so far. Natural languages, Programming. Money earned. Earning capability. Persuasion/recruitment skills. TopicFriends. Well-read.'
-      },
-      {
+      }),
+      hint({
         when: '2019-07-26, 15:01',
         text: 'Think what I\'m going to achieve when I continue on the right path (on which I mostly am). Freedom of space and time. Satisfaction, self-esteem.',
-      },
+      }),
     ]
   })
 
@@ -233,14 +231,14 @@ export class Questions {
       hint({
         text: 'Recall earlier times when You did big progress, eg when You were younger and more hungry. How did You reach here? Now repeat that spirit with all the more resources and wisdom that You have.',
         ifYes: [
-          {
+          hint({
             text: 'Recall what things were connected to the earlier times of progress; e.g. music, sports, certain inspiring movies/documentaries',
             examples: [
               'Machine Head, etc. from 2011 just before CollabNet',
               'Chess, beer, counterstrike with Mariusz',
               'Excitement with new car Ford Galaxy',
             ]
-          },
+          }),
         ]
       }),
       hint(`Find motivation by being strong for others for whom You are wishing well.`),
@@ -322,8 +320,8 @@ export class Questions {
         text: '#Invest in removing distracting elements from your surroundings',
         ifYes: [
           hint('Close unneeded browser tabs and/or open a separate window for the task at hand'),
-          { text: `Block distracting unrelated elements in web pages; e.g. amazon, stackoverflow, YouTube suggestions`},
-          { text: `Clear search/browsing history and close tabs to not get distracted by previous activities. Store the stuff you might need later, in bookmarks / notes.`},
+          hint({ text: `Block distracting unrelated elements in web pages; e.g. amazon, stackoverflow, YouTube suggestions`}),
+          hint({ text: `Clear search/browsing history and close tabs to not get distracted by previous activities. Store the stuff you might need later, in bookmarks / notes.`}),
         ]
       }),
       hint({
@@ -339,34 +337,34 @@ export class Questions {
 
   'Go to sleep at the right time' = hint({
     ifYes: [
-      { text: 'Build a #habit of going to sleep at the right time'
-      },
-      { text: 'Do you turn off and put away (hide) your electronics and other temptations, including computer, mobile phones. ' +
+      hint({ text: 'Build a #habit of going to sleep at the right time'
+      }),
+      hint({ text: 'Do you turn off and put away (hide) your electronics and other temptations, including computer, mobile phones. ' +
           `Can keep Your laptop in another room`,
-      },
-      { text: 'Tomorrow is a day, too (jutro też jest dzień)'
-      },
-      { text: 'Think about (and visualize) the benefits of going to sleep at the right time, including being well-rested and the #consecuences of not having enough sleep (harder to control cravings, impaired thinking and memory), leading to bad life quality, bad emotions, frustration, sickness.'
-      },
+      }),
+      hint({ text: 'Tomorrow is a day, too (jutro też jest dzień)'
+      }),
+      hint({ text: 'Think about (and visualize) the benefits of going to sleep at the right time, including being well-rested and the #consecuences of not having enough sleep (harder to control cravings, impaired thinking and memory), leading to bad life quality, bad emotions, frustration, sickness.'
+      }),
     ]
   })
 
   'Have good sleep' = hint({
     ifYes: [
       hint(`Build good sleep habits`),
-      {
+      hint({
         text: 'Improve falling asleep',
         ifYes: [
           this['Write down things (e.g. lists, email draft) to free your mind from nagging thoughts'],
-          { text: `Avoid light shortly before going asleep; especially bright/blue light.`,
+          hint({ text: `Avoid light shortly before going asleep; especially bright/blue light.`,
             ifYes: [
               hint(`Use dark mode in operating system and apps.`),
             ]
-          },
+          }),
           hint(`Avoid too energetic music in the evening.`),
           hint(`Avoid caffeine in the evening.`),
         ]
-      },
+      }),
       this['Go to sleep at the right time'],
     ]
   })
@@ -423,12 +421,12 @@ export class Questions {
 
   'Choosing/Assesing Products' = hint({
     ifYes: [
-      {
+      hint({
         text: 'Don\'t compare to some imaginary perfect ideal, but rather to other products that You have encountered',
         examples: [
           'Wireless headphones. Probably PowerBeats Pro best ever, even though not perfect',
         ]
-      }
+      }),
     ]
   })
 
@@ -437,20 +435,20 @@ export class Questions {
   'Getting up from sleep/bed' = hint({
     ifYes: [
       this['Energetic music'],
-      { text: `Treat getting up as something You *want* to do, as opposed to *have-to* do.`},
-      { when: '2018-10-06 23:04',
+      hint({ text: `Treat getting up as something You *want* to do, as opposed to *have-to* do.`}),
+      hint({ when: '2018-10-06 23:04',
         text: '(?) Have done something exciting the previous day/afternoon/evening, to have the dopamine effect spill to the next morning. E.g. in my case it was alcohol/games etc.',
         comments: 'Could be something like a nice TED or progress on an attractive non-vague, non-vaguely-needed task',
         example: 'Kurzweil, TED (psychology/tech/science), Interviews, commencement addresses with Jobs, '
-      },
-      { text: 'Have a strong light source',
+      }),
+      hint({ text: 'Have a strong light source',
         comments: 'Could be natural sunlight or wake-up light or wake-up clock with light.'
-      },
-      {
+      }),
+      hint({
         text: 'Start the day with something fun/energizing and with get-up/bootstrap routine; don\'t try to start with some unattractive/difficult tasks (unless they are urgent enough to get going)',
         comments: 'Then, plan the day; which could be motivating too, to see how much I can achieve.'
         /* TODO: lots of practical examples */
-      }
+      }),
     ]
   })
 
@@ -489,10 +487,10 @@ export class Questions {
       hint('Prioritize things which can shed better light (provide understanding/information) on subsequent tasks (reconnaissance)'),
       hint('Then Prioritize things which involve making decisions which can affect further priorities'),
       hint('Can prioritize things with external dependencies, because of uncertainty of how much they will take'),
-      {
+      hint({
         text: 'Can prioritize things which need external people / resources',
         comments: `(because their availability might come and go) - e.g. making appointments`
-      },
+      }),
       hint('Can prioritize the part (thus need to split tasks) of tasks, where things are written down, to not forget them and to stop nagging thoughts. The other part of the task can be done later when time permits.'),
       hint('Can prioritize starting things, which can happen in parallel without much intervention while they are happening (e.g. laundry)'),
       hint('Can prioritize things which are quick to do (but be careful of doing too many "fun and easy" things). Often in the mind an item is an item, no matter if it takes 1 minute or 1 hour. So doing a number of small items can quickly reduce noise in the mind'),
@@ -508,10 +506,10 @@ export class Questions {
       this['Prioritizing'],
       hint(`Write down the plan`),
       hint(`Don't be afraid of writing the things You want to do. Even though it might be overwhelming, but it will keep You at the right track and will help You visualise the outcomes / dream.`),
-      {
+      hint({
         text: `Try to estimate duration and cost.`,
         comments: `If the estimation turns out not accurate - don't worry - treat it as a learning experience and re-estimate. An imperfect estimation is better than no estimation. Estimating also forces us to think about various considerations.`
-      },
+      }),
       hint(`Plan in multiple stages, with stepping stones, milestones, checkpoints and decision points (if-then-else-...) to make your plan more flexible and adaptable.`),
       hint(`Periodically revise and adjust your plan.`),
       hint(`The plan is to set a general direction, but it will have to be adjusted along the way. Which is still better than no plan at all (like ship without a rudder heading in a random direction).`),
@@ -532,22 +530,22 @@ export class Questions {
   'Effectiveness' = hint({
     subTitle: `Doing the right things and doing them efficiently`,
     ifYes: [
-      {
+      hint({
         title: `Efficiency / optimizations`,
         ifYes: [
-          {
+          hint({
             text: 'Look for, and utilize, little accidental or semi-accidental coincidences, patterns; it can even double effectiveness; even though it might feel like "cheating".'
-          },
-          {
+          }),
+          hint({
             title: `Batch related activities`,
             subTitle: `to decrease overhead and context switching and increase efficiency`
-          },
-          {
+          }),
+          hint({
             title: `Don't be afraid to use quick little hacks, quick workaround`,
             subTitle: `"Duct Tape". As opposed to keeping suffering some deficiency or planning a big expensive and/or time-consuming fix someday-maybe`,
-          },
+          }),
         ],
-      }
+      }),
     ]
   })
 
@@ -711,10 +709,10 @@ export class Questions {
 
   'Changing/improving yourself (neuroplasticity?)' = hint({
     ifYes: [
-      {
+      hint({
         text: 'Changing/improving yourself requires attention (mindfulness?) ',
         source: '"Your Brain At Work" audiobook'
-      }
+      }),
     ]
   })
 
@@ -744,17 +742,17 @@ export class Questions {
     * - optimizations
     * */
     ifYes: [
-      {
+      hint({
         text: 'Build good *habits*/routines and eliminate/modify bad habits. Habits let you do things better while making them automatic, thus reducing energy/focus consumption',
         ifYes: [
           hint('For motivation about working on habits: treat habits (which can feel boring sometimes) as BUILDING BLOCKS to build bigger and more exciting things'),
           hint(`Don't worry about having "too many" habits. Once they settle as entrenched habits, They become automatic and thus don't require effort.`),
         ]
-      },
+      }),
       hint(`Remember, that most things in life are experiments. So, do not assume immediate success. Make educated guesses, try things out, observe, take note, analyze, improve, repeat. Patience. Accept possibility of failure, but don't worry about it too much. Enjoy the process of of the experiments, observations, gradual improvements, discoveries.`),
       hint('Ask myself: have I bee in a similar situation before? What were the causes? What were the outcomes?'),
-      { text: `Patience` },
-      { text: `Law of Cause and Effect (Sowing and Reaping)` },
+      hint({ text: `Patience` }),
+      hint({ text: `Law of Cause and Effect (Sowing and Reaping)` }),
       hint(`Emotional Hygiene`),
       hint(`Persistence`),
       hint(`Law of indirect effort`),
@@ -778,14 +776,14 @@ export class Questions {
       hint('Split things into smaller parts. Tackle one thing at a time. Swiss cheesing'),
       hint('Move things into buckets/inbox/todo (GTD)'),
       this['Use stepping stones'],
-      { text: `First apply quicker/cheaper workarounds`,
+      hint({ text: `First apply quicker/cheaper workarounds`,
         comments: `Even if it costs money to apply the temporary workaround. \n` +
           `It will pay off in reduced overwhelm, reduced stress, steady progress without creating circular dependencies. \n` +
           `And You should not feel like You are *cheating* by taking a simplified route. It's an optimization.`,
         examples: [
           `Buying a protective case for Galaxy Note 9 instead of going and spending extra time and money on new phone while already having a big backlog`,
         ]
-      }
+      }),
     ]
   })
 
@@ -875,11 +873,11 @@ export class Questions {
   'Cravings for computer games' = hint({
     ifYes: [
       this.Cravings,
-      { text: `Playing games in controlled way`,
+      hint({ text: `Playing games in controlled way`,
         ifYes: [
           hint(`Do not start at too late hour, risking losing good sleep`),
           hint(`Consider playing one game and get really good at it to get a feeling of satisfaction which will help You at ending a given playing session`),
-          {
+          hint({
             text: `Play/practice against computer opponents or play predefined missions`,
             comments: `From time to time You can play with human opponents, just to satisfy the craving and as a reality check of how good you are`,
             benefits: [
@@ -892,9 +890,9 @@ export class Questions {
               `reduce dependence on good internet connection; minimizing frustration, improving satisfaction`,
               `Can choose whichever map and settings and number of opponents you like.`
             ]
-          },
+          }),
         ]
-      },
+      }),
       hint('Play the game that is life. But prefer to play against previous versions of yourself, and/or against obstacles'),
       hint('There are game-like aspects and tasks in all activities. Use it to Your advantage to gradually replace your vices.'),
       hint(`Learn new things for excitement. The Excitement is double: 1. new things; 2. feeling like becoming a more skilled resourceful person. And don't be afraid to spend money & time on the new activities - as You would have spent money and time on your vices anyway, right?`),
@@ -914,24 +912,24 @@ export class Questions {
 
   'Bored / Boredom' = hint({
     ifYes: [
-      {
+      hint({
         text: `Excitement`,
         ifYes: [
-          { text: 'Strive to expand your person; learn new skills, improve your conditions, meet new people. Examples: learning new language. Find new music, new artists, new albums, even new genres.',
+          hint({ text: 'Strive to expand your person; learn new skills, improve your conditions, meet new people. Examples: learning new language. Find new music, new artists, new albums, even new genres.',
             ifYes: [
-              { text: `Don't limit your thinking to your current job/industry. Think how after reaching a certain level, you can pivot/synergize onto other fields`,
+              hint({ text: `Don't limit your thinking to your current job/industry. Think how after reaching a certain level, you can pivot/synergize onto other fields`,
                 examples: [
                   `Elon Musk: Tesla, Solar City`,
                   `Steve Jobs: Mac -> iPhone, ...`,
                 ]
-              }
+              }),
             ]
-          },
+          }),
           hint(`Re-kindle excitement for the thing that You are supposed to be doing right now.`),
           hint(`Re-kindle / revive things that were exciting to You in the past, e.g. old music / activities / games / friends / projects`),
           hint(`Have a bias towards excitement.`),
         ]
-      }
+      }),
     ]
   })
 
@@ -970,9 +968,9 @@ export class Questions {
       hint({ title: `Think like a business person!`,
         subTitle: `It requires as certain reprogramming of mindset. Need to get rid of habits of thought and action related to being an employee.`,
         ifYes: [
-          { title: `Watch / listen to interviews with Business people.`,
+          hint({ title: `Watch / listen to interviews with Business people.`,
             subTitle: `What made them succeed, what did they overcome.`,
-          }
+          }),
         ],
       }),
       hint({ title: `Determination!`,
@@ -990,24 +988,24 @@ export class Questions {
       this['Being healthy at office job/computer work'],
       hint({ text: `Maintain motivation for building a business`  /* progress, momentum */,
         ifYes: [
-          { text: `Overcome fears of making Your own business`,
+          hint({ text: `Overcome fears of making Your own business`,
             ifYes: [
               hint(`Remember that beginnings are often humble and crummy and with failure`),
             ]
-          },
+          }),
           this.Motivation,
-          { text: `It is just a superior outcome and becoming a superior person in the process.` },
-          { text: `Think of all the great connections You can make while developing the business.`},
-          { text: `Remove / get done with nagging loose ends which create a conflict between working on the business or working/worrying about them`},
-          { text: `Weave in some nice visual improvements/changes to rekindle motivation for the project via the limbic system.`},
-          {text: `Weave in attractive/exciting aspects, like using new tools and learning things along the way. But prefer relatively low-hanging less-risky things, to not jeopardize the business`,
+          hint({ text: `It is just a superior outcome and becoming a superior person in the process.` }),
+          hint({ text: `Think of all the great connections You can make while developing the business.`}),
+          hint({ text: `Remove / get done with nagging loose ends which create a conflict between working on the business or working/worrying about them`}),
+          hint({ text: `Weave in some nice visual improvements/changes to rekindle motivation for the project via the limbic system.`}),
+          hint({text: `Weave in attractive/exciting aspects, like using new tools and learning things along the way. But prefer relatively low-hanging less-risky things, to not jeopardize the business`,
             examples: [
               `Elm (learning about the language is ok, to use as inspiration; but using the language is too far fetched)`,
               `TypeScript 3.7.1-rc in Ionic too far-fetched; but maybe strictNullChecks is ok`,
             ]
-          },
-          { text: `Imagine thousands/millions of people using your product or service and getting value out of it and paying you.`
-          }
+          }),
+          hint({ text: `Imagine thousands/millions of people using your product or service and getting value out of it and paying you.`
+          }),
         ],
       }),
       hint({ text: `Overcome fear of failure.`,
@@ -1068,33 +1066,33 @@ export class Questions {
   'Health / Sick' = problem({
     ifYes: [
       hint(`Drink a lot of water`),
-      { text: `Exercise / Sports`,
+      hint({ text: `Exercise / Sports`,
         ifYes: [
-          { text: `Don't have time / energy / money for exercises / sports / gymnasium`,
+          hint({ text: `Don't have time / energy / money for exercises / sports / gymnasium`,
             ifYes: [
               hint(`Consider home exercises, like vertical push-ups, lifting water bottles`),
               hint(`Consider using exercise equipment in public spaces`),
               hint(`Consider fast walking.`),
               hint(`Consider walking up-hill / up stairs`),
             ]
-          },
+          }),
         ]
-      },
-      { text: `(connector) Having good sleep prevents making poor decisions related to health; reduces overeating`,
+      }),
+      hint({ text: `(connector) Having good sleep prevents making poor decisions related to health; reduces overeating`,
         ifYes: [
           this['Have good sleep'],
         ]
-      }
+      })
     ]
   })
 
   'Get more freedom' = problem({
     ifYes: [
-      {text: `[linker] Discipline (a bit counter-intuitively) gives You more freedom, by allowing You to deal more effectively with things that You have to do, leaving You more time / energy to do things which You really want to do, while making you better at those things as well`,
+      hint({text: `[linker] Discipline (a bit counter-intuitively) gives You more freedom, by allowing You to deal more effectively with things that You have to do, leaving You more time / energy to do things which You really want to do, while making you better at those things as well`,
         ifYes: [
           this['Discipline'],
         ]
-      },
+      }),
       this['Build own business'],
     ]
   })
@@ -1152,12 +1150,12 @@ export class Questions {
         ]
       }),
       hint(`Check, and try to put a time limit on, non-compete / non-solicitation clauses.`),
-      { text: `If the client/employer is not giving a quick decision or is complaining about "too expensive", to "help them make the decision", give a deadline with sub-deadlines, surpassing which would result in You getting out of the talks completely.`
+      hint({ text: `If the client/employer is not giving a quick decision or is complaining about "too expensive", to "help them make the decision", give a deadline with sub-deadlines, surpassing which would result in You getting out of the talks completely.`
         /* If any of those things fail to happen, I might be out completely to free my time and focus:
           - some concrete info from You&Ana by Sunday afternoon
           - some concrete progress mid-Monday
           - final decision, first 50% transfer confirmation by end of Monday */
-      }
+      })
     ]
   })
 
@@ -1175,11 +1173,11 @@ export class Questions {
       hint({ text: `Build a good routine at the start of the day`,
         ifYes: [
           hint(`Wash your face and even neck with cold water to awaken fully.`),
-          { text: `Plan the day`,
+          hint({ text: `Plan the day`,
             ifYes: [
               this['Planning a day']
             ]
-          }
+          }),
         ]
       }),
     ]
