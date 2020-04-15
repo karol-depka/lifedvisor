@@ -68,16 +68,16 @@ export class Questions {
     ifYes: [
       hint(`Use hanging toiletry organizers and wardrobe organizers`),
       hint(`Use transparent bags/cases to more quickly find things in your bag`),
-      {text: `Use 4-wheel rolling bag`,
+      hint({ text: `Use 4-wheel rolling bag`,
         benefits: [
           `more maneuverable in tight situations like security checkpoints, food places; saving time and frustration and risk of causing accident`,
           `less strain on the back while walking with it`,
         ]
-      }
+      })
     ]
   })
 
-  'Learning things' = wish({
+  'Learning and remembering things' = wish({
     ifYes: [
       hint(`Use spaced repetition`),
     ]
@@ -182,12 +182,12 @@ export class Questions {
 
   'Motivation for projects' = hint({
     ifYes: [
-      {
+      hint({
         text: 'Use stretch goals to improve motivation',
         sources: [
           new HintSource('https://charlesduhigg.com/books/smarter-faster-better/'),
         ]
-      }
+      })
     ]
   })
 
@@ -207,14 +207,14 @@ export class Questions {
       hint('#Visualise the benefits, the desired state'),
       hint('Why should I be motivated to do what I think I should do? Because everything else is just *inferior*.'),
       /* FIXME: 'Fun/dopamine' */
-      { text: 'Distinguish between "Have to" and "Want to" (locus of control)',
+      hint({ text: 'Distinguish between "Have to" and "Want to" (locus of control)',
         example: `including company invoices; I don't have to do this`
-      },
+      }),
       this['Utilize and build virtuous circles (and avoid VICIOUS circles, no X -> no Y -> etc)'],
       /* hope/belief */
-      { text: 'Reach a critical mass (proof-of-concept), to legitimize the project in your own mind, and to be able to show others',
+      hint({ text: 'Reach a critical mass (proof-of-concept), to legitimize the project in your own mind, and to be able to show others',
         when: '2018-10-02 22:13'
-      },
+      }),
       this['Self-Esteem'],
       hint('For better motivation (more "toward" state and less "away" state), focus on the desired outcomes of tasks, not problems/effort/uncertainty. According to "Your Brain at work": probably do not focus of undesired outcomes of not doing tasks.'),
       hint('Do not "try" to "replace" actual living with writing down notes about living, like e.g. here. Treat the notes just as supplements and optimizations. They can can cause a kind of inner heaviness (e.g. worrying too much about doing everything right). However writing down notes about balance of fun, watching out for dangerous perfectionism, can help keep a proper balance.'),
@@ -223,9 +223,14 @@ export class Questions {
       hint('Do not suppress things which I am aching to do, and are '),
       hint('Do not try to do (or get motivated for) too many things at the time. I get motivation for one thing, then if it makes any sense, do it. Otherwise it is jumping between tasks and diluting/depleting the motivation. Do not feel *guilty* of not doing some-other-task, while doing current task.' +
         'Even if the other task\'s priority might seem slightly higher, the importance of riding the wave of motivation and finishing the task at hand, is important. Unless the other task is really urgent.'),
-      hint('Avoid self-oppression'),
+      hint({title: 'Avoid self-oppression',
+        ifYes: [
+          hint({title: `Take into account, that we have natural instincts, physiological and emotional needs.`,
+            subTitle: `So keep them in balance with the rest of life`}),
+        ]
+      }),
       hint(`It's good to ask why to increase motivation - why I should I be motivated towards something. But not as many times as to reach origin of life or the universe or even meaning of life (can risk triggering existential void)`),
-      {
+      hint({
         text: 'Recall earlier times when You did big progress, eg when You were younger and more hungry. How did You reach here? Now repeat that spirit with all the more resources and wisdom that You have.',
         ifYes: [
           {
@@ -237,7 +242,7 @@ export class Questions {
             ]
           },
         ]
-      },
+      }),
       hint(`Find motivation by being strong for others for whom You are wishing well.`),
       hint(`Have exciting goals.`),
     ]
@@ -248,75 +253,82 @@ export class Questions {
     ifYes: [
       hint(`Visualise the positive/negative consequences of doing / not doing the things You should do.`),
       hint(`Have a long time perspective`),
-      { text: `Delay gratification, don't DENY gratification`,
-        comments: `Distinguish between "No" and "Yes/Maybe but later". A "No" is negative/inhibitive thought which can lower Your dopamine level.`},
+      hint({ text: `Delay gratification, don't DENY gratification`,
+        comments: `Distinguish between "No" and "Yes/Maybe but later". A "No" is negative/inhibitive thought which can lower Your dopamine level.`}),
       this['Utilize and build virtuous circles (and avoid VICIOUS circles, no X -> no Y -> etc)'],
       this['Motivation'] /* Does discipline require motivation ? */,
       hint(`In order to have discipline, You need motivation`) /* example of inclusion / connector hint/text */,
-      { text: `Motivation for discipline and benefits of it`,
+      hint({ text: `Motivation for discipline and benefits of it`,
         ifYes: [ /* maybe move this to `benefits: ` field; benefits are also like reverse dependencies; but I probably need to write custom texts anyway */
-          { text: `(Misconception) You will get benefits of discipline immediately (not only after years) in the form of #endorphins, increased #self-esteem, reduction of #worry, increase in order and reduction of chaos`,
+          hint({ text: `(Misconception) You will get benefits of discipline immediately (not only after years) in the form of #endorphins, increased #self-esteem, reduction of #worry, increase in order and reduction of chaos`,
             source: 'Brian Tracy - The Miracle of Self-Discipline',
-          },
-          { text: `(Misconception) In the big picture, discipline does not reduce your #freedom, but rather increases it by giving you more time/energy/resources to do what you really want to do`},
+          }),
+          hint({ text: `(Misconception) In the big picture, discipline does not reduce your #freedom, but rather increases it by giving you more time/energy/resources to do what you really want to do`}),
         ]
-      }
+      })
     ]
   })
 
   'Write down things (e.g. lists, email draft) to free your mind from nagging thoughts' = hint({})
 
+  'Get better organized (in general)' = wish({
+    keywords: ['personal organization organisation', 'organising myself']
+  })
 
   'Focus' = hint({
     text: 'Focus and avoiding distractions (in general)',
     ifYes: [
-      { text: `Increase signal-to-noise ratio.`
-      },
-      { text: `Use time tracker to stay focused and see how much time is being spent on each activity.`,
-      },
-      { title: `When switching activity, mark the place where You are.`,
+      hint({title: `Get better organised, to reduce distractions`,
+        ifYes: [
+          this['Get better organized (in general)']
+        ]
+      }),
+      hint(`Archive old things/e-mails/notes which You no longer need right now, but which might distract You (by dragging Your mind away into some far-away old topic)`),
+      hint({ text: `Increase signal-to-noise ratio.`}),
+      hint({ text: `Use time tracker to stay focused and see how much time is being spent on each activity.`}),
+      hint({ title: `When switching activity, mark the place where You are.`,
         subTitle: `To minimize time (time-consuming linear search) needed to get back on track. E.g. via selecting text or putting a bookmark.`,
-      },
-      { text: `When entering a potentially very distracting website (e.g. twitter or LinkedIn)`,
+      }),
+      hint({ text: `When entering a potentially very distracting website (e.g. twitter or LinkedIn)`,
         subTitle: `raise your guard, buckle up and prepare to deflect distractions and temptations`,
         /* "The discipline of focus" */
-      },
-      { text: `Focus on zone of influence, instead of zone of preoccupation`,
+      }),
+      hint({ text: `Focus on zone of influence, instead of zone of preoccupation`,
         sources: [
           sources['7 Habits of Highly Successful people'],
         ]
-      },
+      }),
       this['Low-information diet'],
-      {text: `Work from a list to have a clear track to run on and to avoid distractions.`,
+      hint({ text: `Work from a list to have a clear track to run on and to avoid distractions.`,
         ifYes: [
           hint(`Have the list always open and visible (e.g. on a separate monitor or under a shortcut key).`),
         ]
-      },
+      }),
       hint(`Use ear-plugs`),
-      { text: `Minimize context switching. Write things down instead of acting on them immediately.`,
+      hint({ text: `Minimize context switching. Write things down instead of acting on them immediately.`,
         comments: `Example: write ideas in source code of another project, instead of acting on them immediately.`
-      },
+      }),
       hint('In order to focus on one thing, we have to cut out other things (positive #Sacrifice)'),
-      {
+      hint({
         text: 'Focus is a #skill like any other, therefore requires practice, repetition'
-      },
-      { /* inclusion / connector / explanation */
+      }),
+      hint({ /* inclusion / connector / explanation */
         text: `We focus better when we have good motivation. It's easier to discard other lesser value temptations, when we see high value (thus we are motivated) in what we are doing right now.`,
         ifYes: [
           this.Motivation,
         ]
-      },
-      {
+      }),
+      hint({
         text: '#Invest in removing distracting elements from your surroundings',
         ifYes: [
           hint('Close unneeded browser tabs and/or open a separate window for the task at hand'),
           { text: `Block distracting unrelated elements in web pages; e.g. amazon, stackoverflow, YouTube suggestions`},
           { text: `Clear search/browsing history and close tabs to not get distracted by previous activities. Store the stuff you might need later, in bookmarks / notes.`},
         ]
-      },
-      {
+      }),
+      hint({
         text: 'Do little tasks quickly, to free the mind from distracting nagging thoughts'
-      },
+      }),
       this['Write down things (e.g. lists, email draft) to free your mind from nagging thoughts'],
       hint('Have separate e-mail/IM accounts for various purposes, to not get distracted by another area while dealing with one area.' +
         '\nConsider innotopic.consulting@gmail.com or consulting@innotopic.com, apps.feedback@innotopic.com, apps.development@innotopic.com, innotopic.apps@gmail.com, even better: app-name-here.users@innotopic.com, etc., to not get distracted in one area while working in another.' +
@@ -363,33 +375,33 @@ export class Questions {
   /* cross-cutting concern? */
   'Good decisions' = hint({
     ifYes: [
-      {
+      hint({
         text: 'cost-benefit',
         ifYes: [
           hint('Consider the following "resources" for cost/benefit: health, time, money, emotion(own/others), energy, focus, reputation, .... TODO from my papelito'),
         ]
-      },
-      {
+      }),
+      hint({
         text: 'compare cost (real cost) by the difference to alternatives (no absolute cost) or to "default/current" state',
         example: 'e.g. something costs 100 EUR a month but if I don\'t pay this, I have to pay 70 EUR/month anyway,' +
           'so the real cost is 30 EUR, not 100EUR (making the decision easier); and the benefit is e.g. saved time/emotion or other resources.',
-      },
-      {
+      }),
+      hint({
         title: `Think of higher more general principles`,
         subTitle: `They could help You in making a specific decision`,
-      },
-      {
+      }),
+      hint({
         text: 'consider the alternatives',
         ifYes: [
           hint('Look also at the consequences of inaction or not making the decision'),
         ]
-      },
-      {
+      }),
+      hint({
         text: 'use Pareto principle'
-      },
-      {
+      }),
+      hint({
         text: 'Visualize consequences (financial, emotional, physical, productivity, etc)'
-      },
+      }),
       this['Have good sleep'],
       hint('When trapped into thinking "either-or", think of ways of being able to realize all the options, or combinations of them. E.g. build a business AND be able to travel -> lifestyle business.'),
       hint('Sleep over it'),
@@ -401,13 +413,14 @@ export class Questions {
 
   'Decide what I want to be; I can\'t be a sumo wrestler and ski jumper at the same time' = hint({
     ifYes: [
-      {
+      hint({
         text: 'Choose if I want to still be free and explore or settle down. BUT building a solid base and income can make it easier to travel.'
-      }
+      })
     ]
   })
 
   'Energetic music' = hint({})
+
   'Choosing/Assesing Products' = hint({
     ifYes: [
       {
@@ -443,13 +456,15 @@ export class Questions {
 
   /* same as motivation/dopamine ? */
   '[Low] Energy' = hint({
+    keywords: [`Feeling down`],
     ifYes: [
-      {
+      hint(`Keep in mind that there might be an underlying mental/physical/medical/environmental cause to this low energy, e.g. blood sugar, problems with breathing/sleep. So observe and get checked if necessary. But be careful to not fall into hypochondria.`),
+      hint({
         text: 'Do physical activity to increase blood oxigenation and feeling of control',
         ifYes: [
           hint('You can use cleaning (e.g. vacuuming, house cleaning) as a good way to get physical activity while at the same improving the surroundings'),
         ]
-      },
+      }),
       this['Have good sleep'],
       this['Energetic music'],
     ]
@@ -464,9 +479,9 @@ export class Questions {
       hint('Prioritize prioritizing itself'),
       hint(`Figure out what the biggest bottleneck is, and prioritize it, to unblock`),
       hint(`Use the N-minute rule`),
-      { text: 'Early spend the most time&energy designing things that will affect the most other things and the things that will be hardest to change.',
+      hint({ text: 'Early spend the most time&energy designing things that will affect the most other things and the things that will be hardest to change.',
         comments: `Things that are easy to change later, should be left out crude, to free up energy and focus on the more important things. Exception: things that are very salient and annoying while being easy to change, thus reducing motivation and confidence in the efforts.`
-      },
+      }),
       hint(`Can Prioritize things which help You use the product yourself.`),
       hint(`Can Prioritize things which help You show Your work to others`),
       hint(`Can Prioritize things which will help you build/rekindle motivation`),
@@ -538,44 +553,54 @@ export class Questions {
 
   'Productivity' = hint({
     ifYes: [
-      { title: `Motivation for productivity`,
-
+      /* group into:
+        - motivation for productivity
+        - having more time in which You can be productive
+        - using the time better
+      */
+      hint({ title: `Motivation for productivity`,
         ifYes: [
-          { title: `Get out of your own way`, subTitle: `Stay calm and let Your subconscious mind to its best job as opposed to being anxious about results. You can only directly control the actions/effort, not the result itself.`},
-          {
+          hint({
+            title: `Get out of your own way`,
+            subTitle: `Stay calm and let Your subconscious mind do its best job, as opposed to being anxious about results. You can only directly control the actions/effort, not the result itself.`,
+          }),
+          hint({
             title: `Get a sense of urgency`,
             subTitle: `Time is passing. The only way to deal with this is to use the time better.`,
             ifYes: [
-              hint(`User time-tracker with time-boxing and time-left/overtime notification.`),
-              { title: `Know when things are good enough.` /* for search keywords: excessive self-criticism */,
+              hint({
+                title: `Use time-tracker with estimation/time-boxing and time-left/overtime notification.`,
+              }),
+              hint({
+                title: `Know when things are good enough.` /* for search keywords: excessive self-criticism */,
                 ifYes: [
-                  { title: `Ask Yourself: would You buy this product? Would people buy this product? Would they like it already? Probably. So let's move to the next item...` },
-                  { title: `Ask Yourself: if You saw (without looking too much into tiny details) this thing done by someone else, would You like it? Most often we get too self-critical when looking at our own work.` },
+                  hint({ title: `Ask Yourself: would You buy this product? Would people buy this product? Would they like it already? Probably. So let's move to the next item...` }),
+                  hint({ title: `Ask Yourself: if You saw (without looking too much into tiny details) this thing done by someone else, would You like it? Most often we get too self-critical when looking at our own work.` }),
                 ],
-              },
+              }),
             ],
-          },
-          { title: `Productivity is really the only non-random way to do things` },
-          { title: `Competitiveness`,
+          }),
+          hint({ title: `Productivity is really the only non-random way to do things` }),
+          hint({ title: `Competitiveness`,
             subTitle: `I want to do it better! It's a foundation of a strong system. It lifts everyone up.`,
             ifYes: [
-              { title: `Overcome objections (conscious or unconscious) to competitiveness` /* this could be a field `objections` */,
+              hint({ title: `Overcome objections (conscious or unconscious) to competitiveness` /* this could be a field `objections` */,
                 ifYes: [
-                  { title: `Objection: Isn't competing bad/aggressive/brutal ?`,
+                  hint({ title: `Objection: Isn't competing bad/aggressive/brutal ?`,
                     subTitle: `As long as we don't do anything unethical, competition is actually good. Friendly competition is possible.`
-                  },
-                  { title: `Objection: Isn't cooperating better than competing?`,
+                  }),
+                  hint({ title: `Objection: Isn't cooperating better than competing?`,
                     subTitle: `One does not exclude the other.`
-                  }
+                  }),
                 ],
-              }
+              }),
             ]
-          },
-          { title: `Visualise the benefits of productivity`, subTitle: `You are going to feel better, stronger, a better person. There will be useful outcomes. You can help others.` }
+          }),
+          hint({ title: `Visualise the benefits of productivity`, subTitle: `You are going to feel better, stronger, a better person. There will be useful outcomes. You can help others.` })
         ],
-      },
-      { title: `Use the best tool for the job.`},
-      { title: `Let focus on results (ends) guide You, instead of dwelling on means.`},
+      }),
+      hint({ title: `Use the best tool for the job.`}),
+      hint({ title: `Let focus on results (ends) guide You, instead of dwelling on means.`}),
       this.Confidence,
       this.Focus,
       this.Motivation,
@@ -584,13 +609,22 @@ export class Questions {
       // this['Energy'],
       this['Good decisions'],
       this['Effectiveness'],
-      hint('Have more time ... - create more usable time'),
-      hint('Use the time better ...[-> focus, organisation, tools, etc]'),
-      {text: 'Delegate',
+      /* top-level grouping */ hint('Have more time ... - create more usable time'),
+      /* top-level grouping */ hint({text: 'Use the time better ...[-> focus, organisation, tools, etc]',
+        ifYes: [
+          hint({title: `Get better at doing things`,
+            ifYes: [
+              this['Learning and remembering things'],
+              hint(`Do Katas`),
+            ],
+          })
+        ]
+      }),
+      hint({text: 'Delegate',
         ifYes: [
           hint(`Spend time assigning/coordinating/checking work of other people, knowing it will pay off, whereas neglecting it will have negative consequences in morale/quality/quantity of work.`),
         ]
-      },
+      }),
       hint(`Reach a state of Flow`),
       hint(`Sustained relaxed focus`),
       hint(`Avoid mental blocks`),
@@ -624,42 +658,42 @@ export class Questions {
 
   'Software development' = hint({
     ifYes: [
-      { text: `Assess quality / popularity of given project/library/program`,
+      hint({ text: `Assess quality / popularity of given project/library/program`,
         ifYes: [
           hint(`Use https://bestofjs.org/projects/testcafe`),
           hint(`Use StackShare`),
         ]
-      },
-      {
+      }),
+      hint({
         text: 'Be faster at programming',
         ifYes: [
           hint('Use IDE/editor navigation history; back/forward'),
           hint('Use keyboard shortcut to get to matching brace (^M)'),
         ]
-      },
+      }),
     ]
   })
 
 
   'Dealing with other people' = hint({
     ifYes: [
-      {
+      hint({
         text: 'Watch out for triggering other people\'s "status threat"',
         when: '2018-10-06 22:46',
-      },
-      {
+      }),
+      hint({
         text: 'Allocate effort on bonding and team-building between people, before diving into work (work which might trigger tensions between people)',
         example: 'play games together; example: odkrywanki; '
-      },
-      {
+      }),
+      hint({
         text: `Seek to understand before being understood`,
-      },
-      {
+      }),
+      hint({
         text: `Be a good listener`,
         ifYes: [
           hint(`Avoid interrupting`),
         ]
-      }
+      }),
     ]
   })
 
@@ -933,28 +967,28 @@ export class Questions {
 
   'Build own business' = hint({
     ifYes: [
-      { title: `Think like a business person!`,
+      hint({ title: `Think like a business person!`,
         subTitle: `It requires as certain reprogramming of mindset. Need to get rid of habits of thought and action related to being an employee.`,
         ifYes: [
           { title: `Watch / listen to interviews with Business people.`,
             subTitle: `What made them succeed, what did they overcome.`,
           }
         ],
-      },
-      { title: `Determination!`,
+      }),
+      hint({ title: `Determination!`,
         subTitle: `Without determination You will not go far - you will get stuck in a kind of middle-zone limbo.`,
-      },
+      }),
       hint(`Get feedback from trusted people, early and often`),
-      {text: `Decide what kind of business You want - big / VC-funded / lifestyle / bootstrapped`,
+      hint({text: `Decide what kind of business You want - big / VC-funded / lifestyle / bootstrapped`,
         ifYes: [
           hint(`Decide how many hours per week/day/mont You would like to spend working: 1. in the initial growth period; 2. as a target`),
           hint(`Decide if You would like to hire employees/freelancers and how many; depends on your introversion/extroversion level and how much You like/dislike dealing with people`),
         ]
-      },
+      }),
       hint(`Remember, that You might need/want to pivot`),
       this['Productivity'],
       this['Being healthy at office job/computer work'],
-      { text: `Maintain motivation for building a business`  /* progress, momentum */,
+      hint({ text: `Maintain motivation for building a business`  /* progress, momentum */,
         ifYes: [
           { text: `Overcome fears of making Your own business`,
             ifYes: [
@@ -975,17 +1009,17 @@ export class Questions {
           { text: `Imagine thousands/millions of people using your product or service and getting value out of it and paying you.`
           }
         ],
-      },
-      { text: `Overcome fear of failure.`,
+      }),
+      hint({ text: `Overcome fear of failure.`,
         ifYes: [
           hint(`Even if You fail, the journey makes You stronger, more resourceful and ready to try another time or pivot to something else.`),
           hint(`Failure is not so probable really, since You have been gathering skills, resources, contacts and personal qualities for a long time, ready to put them to good use.`),
           hint(`Realise, that You control the probability of success`),
         ]
-      },
-      {
+      }),
+      hint({
         title: `Overcome fear of success.`,
-      },
+      }),
       /* Fear of wasting time / failing: remember there will be activities that You like and are proud of; e.g. programming, designing apps */
       hint(`Don't worry as much about chasing the latest and greatest technologies, because You will hardly release anything. Focus on value for users and, building working prototypes, and on releaseable version.`),
       hint(`At first, skip certain details that can be defined later.`),
@@ -1068,9 +1102,9 @@ export class Questions {
   'Dealing with, solving, problems' = problem({
     ifYes: [
       hint(`Accept or overcome`),
-      { text: `You might or might not be responsible for the problem occurring but You are responsible on how you handle it`,
+      hint({ text: `You might or might not be responsible for the problem occurring but You are responsible on how you handle it`,
         comments: `"The problem... is not the problem. The problem is our approach to the problem"`,
-      }
+      })
     ]
   })
 
@@ -1087,15 +1121,17 @@ export class Questions {
     ifYes: [
       this['Motivation'],
       hint(`Consider and visualise the positive and negative consequences of doing and not doing the thing You should do. Focus on the positive, to keep dopamine level up.`),
-      { title: `Overcoming procrastination for a given activity, could be a task on its own.`, subTitle: `So feel free to allocate&spend time, energy, money on it ` },
-      { title: `It's okay to ask why`, subTitle: `But don't ask "why" too many times`}
+      hint({ title: `Overcoming procrastination for a given activity, could be a task on its own.`, subTitle: `So feel free to allocate&spend time, energy, money on it ` }),
+      hint({ title: `It's okay to ask why`, subTitle: `But don't ask "why" too many times`}),
+      hint({ title: `Trick yourself into starting the activity, by starting and "doing it just for a few minutes"`,
+        subTitle: `Often You will get hooked and will continue doing the activity to get to completion.`})
     ]
   })
 
   'Organising things (e.g. at home)' = problem({
     ifYes: [
       hint(`First split the day-to-day things that you will really need in the coming days, from the someday-maybe / undecided / unordered things.`),
-      { text: `Put related things together`,
+      hint({ text: `Put related things together`,
         benefits: [
           `See how much space a given category of things really takes.`,
           `Detect duplicates or redundancies / excess`,
@@ -1103,18 +1139,18 @@ export class Questions {
           `Make it easier to analyze if we really have everything we need; to take an inventory of what we have.`,
           `General feeling of order`,
         ]
-      }
+      })
     ]
   })
 
   'Negotiating contracts' = problem({
     ifYes: [
-      { text: `Negotiate remote work`,
+      hint({ text: `Negotiate remote work`,
         ifYes: [
           hint(`Use any of your situation for arguing for remote work (can be partial at first) : health, family situation, experience, life values`),
           hint(`First negotiate / ask for a bit of remote work, e.g. for specific periods or certain number of days per week/month, later to be expanded once confidence grows.`),
         ]
-      },
+      }),
       hint(`Check, and try to put a time limit on, non-compete / non-solicitation clauses.`),
       { text: `If the client/employer is not giving a quick decision or is complaining about "too expensive", to "help them make the decision", give a deadline with sub-deadlines, surpassing which would result in You getting out of the talks completely.`
         /* If any of those things fail to happen, I might be out completely to free my time and focus:
@@ -1133,10 +1169,10 @@ export class Questions {
     ]
   })
 
-  'Start the day well' = problem({
+  'Start the day well' = hint({
     ifYes: [
       this['Getting up from sleep/bed'],
-      { text: `Build a good routine at the start of the day`,
+      hint({ text: `Build a good routine at the start of the day`,
         ifYes: [
           hint(`Wash your face and even neck with cold water to awaken fully.`),
           { text: `Plan the day`,
@@ -1145,25 +1181,40 @@ export class Questions {
             ]
           }
         ]
-      }
+      }),
     ]
   })
 
   'Self-improvement and personal transformation (become better)' = problem({
-    subTitle: `Positive personal change, changing for the better`,
+    subTitle: `Positive personal change. Changing for the better.`,
     ifYes: [
+      hint({
+        title: `We are what we most think about`,
+        subTitle: `So take care to control Your thoughts`,
+        ifYes: [
+          hint({
+            title: `Control your surroundings to maximize desired thoughts and minimize undesired thoughts`,
+            subTitle: `Keep your thoughts focused on the right things`,
+            ifYes: [
+              hint({
+
+              }),
+            ]
+          })
+        ]
+      }),
       hint(`Mindfulness`),
       hint(`Allocate and spend time on self-improvement`),
       hint(`When you get an idea or epiphany, take a moment to acknowledge it, reflect on it, internalize it, let it sink in.`),
       hint(`Cultivate Your Epiphanies`),
       hint(`Actively look for positive/negative patterns that occur in Your life, Your behaviour.`),
-      { title: `When You are becoming better than average, don't be afraid of becoming a bit different from most people.`,
+      hint({ title: `When You are becoming better than average, don't be afraid of becoming a bit different from most people.`,
         subTitle: `Don't be afraid to be a bit in your own (positive) bubble.`
-      },
+      }),
       hint(`Work on Yourself at least as hard as on your work.`),
-      {
+      hint({
         title: `Acknowledge that some outcomes in life are better than others`,
-      }
+      }),
     ]
   })
 
@@ -1179,8 +1230,9 @@ export class Questions {
   'Have a great life (root)' = problem({
     subTitle: `Live a great life. Live a great way`,
     ifYes: [
-      { text: `Balance`
-      }
+      hint({
+        text: `Balance`
+      })
     ]
   })
 
@@ -1189,6 +1241,7 @@ export class Questions {
   'Impostor Syndrome' = problem({
     ifYes: [
       hint(`Remember that the more we know, the more we know we don't know`),
+      hint(`People are paying You money and then praise Your useful work? Means You are doing a good job in the market, and You are not an impostor. While of course You (and anyone) can always still get better, which is natural.`),
     ]
   })
 
@@ -1204,6 +1257,18 @@ export class Questions {
     . - has more generic things and in process of productizing and organizing it
     . - works on mobile
    */
+
+
+  'Get Rich' = wish({
+    keywords: ['improve financials finances financially', 'get out of poverty', 'not being poor', 'get more money', 'become wealthy' ],
+    ifYes: [
+      hint({
+        title: `Determine what rich means for You`,
+        subTitle: `Try to be more specific. And it's not only about money.`
+      }),
+      hint(`Earn more`),
+    ]
+  })
 
 }
 
