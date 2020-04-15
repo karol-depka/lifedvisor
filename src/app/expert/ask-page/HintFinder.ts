@@ -35,6 +35,9 @@ export class HintFinder {
   }
 
   public matchesFilter(hint: LiHint | string, filter?: Filter): boolean {
+    // https://www.wordsapi.com/
+    // https://github.com/FinNLP/synonyms
+    // https://fusejs.io/demo.html -- fuzzy search with misspellings and accents!
     if ( ! filter ) {
       return true
     }
