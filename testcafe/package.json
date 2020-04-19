@@ -4,10 +4,23 @@
     "description": "",
     "main": "testsIndex.js",
     "scripts": {
-        "tsc:watch": "npm run tsc -- --watch",
-        "tsc": "time tsc --outDir ts_out",
-        "test": "npm run test:chrome --",
-        "test:chrome": "npm run tsc && testcafe chrome --live --speed 1  ts_out/testSrc/testsIndex.js --",
+        "tcafe": "npx testcafe",
+        "tcafe:repeated": "npm run tcafe --",
+        "tcafe:raw": "",
+        "tcafe:all": "testcafe all",
+        "tcafe:ffch": "testcafe firefox,chrome",
+
+        "test": "npm run test:ff --",
+        "test1_opts_experiment": "npm run test:ff  -- $TCAFE_OPTS",
+
+        "tcafe:live_experiments": "TCAFE_OPTS=tcafeOpts  npm run test -- --zzz --live --speed 0.3 --uuu",
+        "tcafe:l": "npm run tcafe -- --live --debug-on-fail",
+
+        "test:chrome": "npm run tsc  &&  testcafe chrome --speed 1",
+        "test:ff_OLD": "npm run tsc  &&  testcafe firefox -S -s screenshots $TCAFE_OPTS",        "tsc:watch": "npm run tsc -- --watch",
+
+
+
         "test:ff": "npm run tsc && testcafe firefox -S -s screenshots --speed 1  ts_out/testSrc/testsIndex.js",
         "test:short:h": "npm run tsc && testcafe \"chrome:headless:emulation:device=iphone X\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=iphone X\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=iPad\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=iPhone 6/7/8\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=Pixel 2 XL\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=Galaxy S5\"  ts_out/testsIndex.js",
         "test:all:h": "npm i && npm run tsc && testcafe \"chrome:headless:emulation:device=iphone X\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=iphone X\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=iPad Pro\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=iPad\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=iPhone 6/7/8\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=iPhone 5/SE\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=Pixel 2 XL\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=Pixel 2\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=Galaxy S5\"  ts_out/testsIndex.js",

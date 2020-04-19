@@ -1,11 +1,13 @@
 {
 //  "videoPath": "reports/screen-captures"
   "skipJsErrors": false,
-  "assertionTimeout": 10000,
-  "selectorTimeout": 10000,
-  "debugOnFail": true,
+  "assertionTimeout": 5000,
+  "selectorTimeout": 5000,
+//  "debugOnFail": false,
   "screenshots": {
     "takeOnFails": true,
     "path": "screenshots",
-  }
+  },
+  "browsers": "firefox", // https://devexpress.github.io/testcafe/documentation/using-testcafe/configuration-file.html#browsers
+  "src": "testSrc/testsIndex.ts"
 }

@@ -13,7 +13,6 @@
 //    "**/*.spec.ts"
 //  ],
 
-
   "compilerOptions": {
     "alwaysStrict": true,
     "forceConsistentCasingInFileNames": true,

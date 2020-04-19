@@ -3,6 +3,7 @@ import {LOCALHOST_URL} from './utilsGlobal/globals';
 import {checkHintsExist} from './scenarios/checkHintsExist';
 import {testRepetitions, testWrapper} from './utilsGlobal/testRunner';
 
+console.log(`Starting TestCafe tests`, new Date());
 
 (fixture (`Fixture: LifeDvisor Web` ) as any)
 // .disablePageReloads
@@ -24,32 +25,47 @@ import {testRepetitions, testWrapper} from './utilsGlobal/testRunner';
 //   // https://devexpress.github.io/testcafe/documentation/test-api/authentication/user-roles.html
 // })
 
+const runAllTests = true
+
 
 testRepetitions(() => {
-  testWrapper('Check all hints exist and test search', async (t) => {
+  if ( runAllTests || false ) testWrapper('Check all hints exist', async (t) => {
     await checkHintsExist()
+  })
+
+  if ( runAllTests || false ) testWrapper('Check all hints exist and test search', async (t) => {
+    await askPage.clickExpandAllButton()
+
     await askPage.typeFilter(`priorit`)
     await askPage.typeFilter(`a`)
 
     //
     await askPage.typeFilter(`surroundings clean`)
 
-    await askPage.expectHint(`Make everyday real life more enjoyable`)
-    await askPage.expectHint(`surroundings clean`)
+    await askPage.expectHintVisible(`Make everyday real life more enjoyable`)
+    await askPage.expectHintVisible(`surroundings clean`)
 
 
     await askPage.typeFilter(`focus`)
 
-    await askPage.expectHint(`When entering a potentially very distracting website`)
-    await askPage.expectHint(`Focus on zone of influence, instead of zone of preoccupation`)
+    await askPage.expectHintVisible(`When entering a potentially very distracting website`)
+    await askPage.expectHintVisible(`Focus on zone of influence, instead of zone of preoccupation`)
 
     await askPage.typeFilter(`procrastination`)
-    await askPage.expectHint(`Consider and visualise the positive and negative consequences of doing and not doing the thing You should do. Focus on the positive, to keep dopamine level up.`)
-
-
+    await askPage.expectHintVisible(`Consider and visualise the positive and negative consequences of doing and not doing the thing You should do. Focus on the positive, to keep dopamine level up.`)
   })
 
-  // testWrapper('Test search', async t => {
-  // })
+  if ( runAllTests || true ) testWrapper(`expand hint and child hint exists`, async () => {
+    const hintComp = await askPage.getVisibleHint(`Fun/dopamine`)
+    await hintComp.expandHowToImprove()
+    await hintComp.expectChildHintVisible(`things like games could be about dosage and cost/benefit; and making breaks; and having exit strategy`)
+  })
+
+  if ( runAllTests || false ) testWrapper('Expand All', async t => {
+    // useful for making sure all templates correctly render
+    await askPage.clickExpandAllButton()
+  })
+
+  // TODO: test partial matching. E.g. "im feeling freaking annoyed" -> ...
 
 })
