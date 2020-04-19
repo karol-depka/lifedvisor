@@ -47,13 +47,14 @@ export class HintFinder {
     return (
       // TODO: weights
       textMatch(hint.title, filter) ||
+      textMatch(hint.titleSuffix, filter) ||
       textMatch(hint.text, filter) ||
       textMatch(hint.subTitle, filter) ||
       textMatch(hint.comments, filter) ||
       textMatch(hint.byLang ?. es, filter) ||
       textMatch(hint.byLang ?. pl, filter) ||
       textMatch(hint.id, filter) ||
-      !! hint.keywords ?. some(keyword => textMatch(keyword, filter))
+      !! hint.searchTerms ?. some(keyword => textMatch(keyword, filter))
     );
   }
 

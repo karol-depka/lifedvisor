@@ -6,6 +6,7 @@
   >
     <h5>
       <!--Wish: --> {{wish.title || wish.text || wish.id || wish}}
+      <sup *ngIf="wish.titleSuffix; let suffix">{{suffix}}</sup>
     </h5>
     <p>{{wish.subTitle}}</p>
 
@@ -13,12 +14,24 @@
       Example: {{wish.example}}
     </p>
 
-    <ol *ngIf="wish.benefits">
+    <ng-container *ngIf="wish.benefits; let benefits">
       Benefits:
-      <li *ngFor="let benefit of wish.benefits">
-        {{benefit}}
-      </li>
-    </ol>
+      <ol>
+        <li *ngFor="let benefit of benefits">
+          {{benefit}}
+        </li>
+      </ol>
+    </ng-container>
+
+
+    <ng-container *ngIf="wish.exceptions; let exceptions">
+      Exceptions:
+      <ol>
+        <li *ngFor="let exception of exceptions">
+          {{exception}}
+        </li>
+      </ol>
+    </ng-container>
 
     <!--  <app-hint-benefits-->
     <!--    -->
@@ -36,7 +49,9 @@
     <div *ngIf="wish.sources; let sources">
       Sources:
       <ul>
-        <li *ngFor="let source of sources">{{source.title || source.id }}</li>
+        <li *ngFor="let source of sources">
+          {{source.title || source.id }}
+        </li>
       </ul>
     </div>
   </div>
@@ -51,7 +66,7 @@
   <div
     *ngIf="isExpanded && wish.ifYes ?. length"
   >
-    This will help You:
+    <p style="margin-top: 10px;">This will help You:</p>
     <div
       class="hint-children"
       *ngFor="let childWish of wish.ifYes"
@@ -61,8 +76,9 @@
         [wish]="childWish"
         [ancestorMatchesFilter]="matchesFilter() || ancestorMatchesFilter"
         [filter]="filter"
-        [isExpanded]="isExpanded"
-      ></app-hint>
+      >
+        <!-- [isExpanded]="isExpanded" -->
+      </app-hint>
     </div>
   </div>
 

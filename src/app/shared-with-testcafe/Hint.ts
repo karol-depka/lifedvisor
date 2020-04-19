@@ -28,9 +28,12 @@ export class LiHint {
     public ifYes?: LiHint[],
     public byLang?: { es?: string, pl?: string },
     public title?: string /* will be non-optional when I finish removing `text` */,
-    /** TODO: split into title and contents */
+    public titleSuffix?: string,
+    /** TODO: split into title and contents;
+     * bodyText? */
     public text?: string,
     public subTitle?: string,
+    public exceptions?: string[],
     public source?: string,
     public sources?: HintSource [],
     public when?: string,
@@ -40,7 +43,7 @@ export class LiHint {
     public problemText?: string,
     public benefits?: string[],
     /** like Tags in YouTube? - groupings of potential search phrases, as opposed to just keyWORDS? To help improve scoring in algorithm */
-    public keywords?: string[],
+    public searchTerms?: string[],
   ) {
   }
 }
@@ -57,5 +60,7 @@ export function hint(param?: LiHint | string): LiHint {
   return param || {};
 }
 
+/** a marker for hint giving context to redirect to other hint */
+export const hintBridge = hint
 export const problem = hint
 export const wish = hint
