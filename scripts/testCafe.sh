@@ -1,40 +1,27 @@
 #!/bin/bash
 
-#cd `dirname "$0"/..`
+date
 
 nRuns=1
 
-runSingleTestRepetition() {
+runSingleRepetition() {
   echo "======================= RUN $i of $nRuns - `date`"
-  echo pwd before testcafe: `pwd`
-  time npm run test -- --live
-#    npx testcafe chrome --speed 0.1  ts_out/testsIndex.js
+  echo Args For TestCafe: "$@"
+  time npm run tcafe:repeated -- "$@"
 }
 
 runAll() {
-  sharedWithTestCafe="shared-with-testcafe"
-  rm -r ts_out
-
-  pwd
-
   echo git status:
   git status
   git log -n 1
 
-  set -x
-
-#  cd testcafe && \
-#    rm -r "$sharedWithTestCafe"
-#    cp -r "../src/app/$sharedWithTestCafe" "../src/app/utils" . && \
-#    npx tsc --outDir ts_out && \
-# when I figure out how to use `include: ` - write answer to https://stackoverflow.com/questions/35734366/typescript-can-tsc-be-run-against-an-entire-folder
-    cd testcafe && \
-    echo "Starting tests" && \
+  echo "Starting tests"
+  cd testcafe && \
     for i in $(seq 1 ${nRuns}); do \
-      runSingleTestRepetition; \
+      runSingleRepetition "$@" ; \
     done
 }
 
-time runAll
+time runAll "$@"
 
 echo ===================== Tests Finished `date`
