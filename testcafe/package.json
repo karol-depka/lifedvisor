@@ -11,9 +11,7 @@
         "tcafe:ffch": "testcafe firefox,chrome",
 
         "test": "npm run test:ff --",
-        "test1_opts_experiment": "npm run test:ff  -- $TCAFE_OPTS",
 
-        "tcafe:live_experiments": "TCAFE_OPTS=tcafeOpts  npm run test -- --zzz --live --speed 0.3 --uuu",
         "tcafe:l": "npm run tcafe -- --live --debug-on-fail",
 
         "test:chrome": "npm run tsc  &&  testcafe chrome --speed 1",
