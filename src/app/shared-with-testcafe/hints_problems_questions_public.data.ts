@@ -1385,6 +1385,7 @@ export class Questions {
     ifYes: [
       question({
         title: `What to do in life?`,
+        searchTerms: [`What should I do with my life`],
         ifYes: [
           this['Use Ikigai'],
         ]

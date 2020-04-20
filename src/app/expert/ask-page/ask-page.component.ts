@@ -4,7 +4,10 @@ import {
   OnInit,
 } from '@angular/core';
 import { debounceTime } from 'rxjs/operators';
-import { LiHint } from '../../shared-with-testcafe/Hint';
+import {
+  LiHint,
+  LiHintImpl,
+} from '../../shared-with-testcafe/Hint';
 import { questionsProblemsWishes } from '../../shared-with-testcafe/hints';
 import { HintFinder } from './HintFinder';
 
@@ -18,26 +21,16 @@ export class AskPageComponent implements OnInit {
   textField = ''
   textFieldDummy = ''
 
-  // filteredProblems = [
-  //   {
-  //     problemText: 'I have a problem going to sleep at the right time'
-  //   },
-  //   {
-  //     problemText: 'I play too much computer games'
-  //   },
-  // ]
-  //
-  //
-  filteredProblems: LiHint[] = Object.values(questionsProblemsWishes)
+  filteredProblems: LiHintImpl[] = Object.values(questionsProblemsWishes)
   isExpandAll = false /* better for debugging */
 
   filterToThrottle$ = new EventEmitter<string>()
 
-  hintFinder = new HintFinder()
+  hintFinder = HintFinder.instance
 
   constructor() {
     this.filterToThrottle$.pipe(
-      debounceTime(1000)
+      debounceTime(100)
     ).subscribe(value => {
       this.textField = value
     })
@@ -54,7 +47,7 @@ export class AskPageComponent implements OnInit {
     }
   }
 
-  isVisibleViaFilter(wish: LiHint | string) {
-    return this.hintFinder.isVisibleViaFilter(wish, this.textField)
+  isVisibleViaFilter(hint: LiHintImpl) {
+    return hint.isVisibleViaFilter(this.textField)
   }
 }

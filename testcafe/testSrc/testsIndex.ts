@@ -29,7 +29,7 @@ console.log(`Starting TestCafe tests`, new Date());
 //   // https://devexpress.github.io/testcafe/documentation/test-api/authentication/user-roles.html
 // })
 
-const runAllTests = false || getRunAllTestsFromEnv()
+const runAllTests = true || getRunAllTestsFromEnv()
 
 
 testRepetitions(() => {

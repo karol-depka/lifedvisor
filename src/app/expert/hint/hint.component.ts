@@ -6,6 +6,7 @@ import {
 import {
   Filter,
   LiHint,
+  LiHintImpl,
 } from '../../shared-with-testcafe/Hint';
 import { HintFinder } from '../ask-page/HintFinder';
 
@@ -24,10 +25,10 @@ export class HintComponent implements OnInit {
   filter: Filter = ``
 
   @Input()
-  wish!: LiHint
+  wish ! : LiHintImpl
 
   @Input()
-  ancestorMatchesFilter?: boolean
+  ancestorMatchesFilter ? : boolean
 
   get isOnlyVisibleToShowChild () {
     return ! ( this.matchesFilter() || this.ancestorMatchesFilter )
@@ -51,11 +52,10 @@ export class HintComponent implements OnInit {
   }
 
   matchesFilter() {
-    // return true
-    return new HintFinder().matchesFilter(this.wish, this.filter)
+    return this.wish.matchesFilter(this.filter)
   }
 
-  isVisibleViaFilter(wish: LiHint| string) {
-    return new HintFinder().isVisibleViaFilter(wish, this.filter)
+  isVisibleViaFilter(hint: LiHintImpl) {
+    return hint.isVisibleViaFilter(this.filter)
   }
 }
