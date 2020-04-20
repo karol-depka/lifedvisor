@@ -14,12 +14,7 @@
 
         "tcafe:l": "npm run tcafe -- --live --debug-on-fail",
 
-        "test:chrome": "npm run tsc  &&  testcafe chrome --speed 1",
-        "test:ff_OLD": "npm run tsc  &&  testcafe firefox -S -s screenshots $TCAFE_OPTS",        "tsc:watch": "npm run tsc -- --watch",
 
-
-
-        "test:ff": "npm run tsc && testcafe firefox -S -s screenshots --speed 1  ts_out/testSrc/testsIndex.js",
         "test:short:h": "npm run tsc && testcafe \"chrome:headless:emulation:device=iphone X\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=iphone X\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=iPad\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=iPhone 6/7/8\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=Pixel 2 XL\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=Galaxy S5\"  ts_out/testsIndex.js",
         "test:all:h": "npm i && npm run tsc && testcafe \"chrome:headless:emulation:device=iphone X\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=iphone X\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=iPad Pro\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=iPad\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=iPhone 6/7/8\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=iPhone 5/SE\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=Pixel 2 XL\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=Pixel 2\"  ts_out/testsIndex.js ; testcafe \"chrome:headless:emulation:device=Galaxy S5\"  ts_out/testsIndex.js",
         "test:short": "npm run tsc && testcafe \"chrome:emulation:device=iphone X\"  ts_out/testsIndex.js ; testcafe \"chrome:emulation:device=iphone X\"  ts_out/testsIndex.js ; testcafe \"chrome:emulation:device=iPad\"  ts_out/testsIndex.js ; testcafe \"chrome:emulation:device=iPhone 6/7/8\"  ts_out/testsIndex.js ; testcafe \"chrome:emulation:device=Pixel 2 XL\"  ts_out/testsIndex.js ; testcafe \"chrome:emulation:device=Galaxy S5\"  ts_out/testsIndex.js",
