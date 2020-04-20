@@ -1,11 +1,15 @@
 #!/bin/bash
 
+testCafe () {
+  npm  --prefix  testcafe  run  tcafe:ffch  --debug-on-fail
+}
+
 doAll () {
   if [[ -z "$(git status --porcelain)" ]]; then
     echo "Git Working directory clean"
   else
     echo
-    echo "ERROR: Uncommitted changes - unable will not deploy"
+    echo "ERROR: Uncommitted changes - will not deploy"
     echo
     git status
     exit 1
@@ -25,15 +29,13 @@ doAll () {
   #ng build \
   npm  lws  &
 
-  export TESTCAFE_URL="http://localhost:8811/" # lws
   time \
-    scripts/testCafe.sh  --debug-on-fail  \
-    &&  npm  run  build.prod  \
-    &&  time  firebase deploy --only hosting  \
-    &&  export TESTCAFE_URL="https://lifedvisor.innotopic.com/"  \
+        npm  run  build.prod  \
+    &&  TESTCAFE_URL="http://localhost:8811/"  testCafe  \
+    &&  time  firebase  deploy  --only hosting  \
     &&  git tag deploy_`date -u +%Y-%m-%d__%H.%M.%SZ`  \
     &&  git push --tags  \
-    &&  scripts/testCafe.sh  --debug-on-fail
+    &&  TESTCAFE_URL="https://lifedvisor.innotopic.com/"  testCafe
 
   Echo Finished "$0" `date`
 }
