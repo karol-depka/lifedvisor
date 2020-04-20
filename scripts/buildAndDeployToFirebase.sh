@@ -35,6 +35,7 @@ doAll () {
     &&  time  firebase  deploy  --only hosting  \
     &&  git tag deploy_`date -u +%Y-%m-%d__%H.%M.%SZ`  \
     &&  git push --tags  \
+    &&  git push  \
     &&  TESTCAFE_URL="https://lifedvisor.innotopic.com/"  testCafe
 
   Echo Finished "$0" `date`
