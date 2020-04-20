@@ -27,7 +27,7 @@ doAll () {
   #git tag test_`date --utc +%Y-%m-%d_%H.%M.%SZ`
 
   #ng build \
-  npm  lws  &
+  npm  run  lws  &
 
   time \
         npm  run  build.prod  \
