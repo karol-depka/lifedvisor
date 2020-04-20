@@ -1,7 +1,11 @@
 import { askPage } from './pages/ask.po';
-import {TESTCAFE_URL} from './utilsGlobal/globals';
-import {checkHintsExist} from './scenarios/checkHintsExist';
-import {testRepetitions, testWrapper} from './utilsGlobal/testRunner';
+import { checkHintsExist } from './scenarios/checkHintsExist';
+import { TESTCAFE_URL } from './utilsGlobal/globals';
+import {
+  testRepetitions,
+  testWrapper,
+} from './utilsGlobal/testRunner';
+import { getRunAllTestsFromEnv } from './utilsGlobal/utils';
 
 console.log(`Starting TestCafe tests`, new Date());
 
@@ -25,7 +29,7 @@ console.log(`Starting TestCafe tests`, new Date());
 //   // https://devexpress.github.io/testcafe/documentation/test-api/authentication/user-roles.html
 // })
 
-const runAllTests = true
+const runAllTests = false || getRunAllTestsFromEnv()
 
 
 testRepetitions(() => {
@@ -66,8 +70,11 @@ testRepetitions(() => {
     await askPage.clickExpandAllButton()
   })
 
-  // TODO: test partial matching. E.g. "im feeling freaking annoyed" -> ...
+  if ( runAllTests || true ) testWrapper('sub-element is expanded to show element matching search query', async t => {
+    await askPage.typeFilter(`What to do in life`)
+    await askPage.expectHintVisible(`What to do in life?`)
+  })
 
-  // TODO: test sub-element being expanded to show element matching search query
+  // TODO: test partial matching. E.g. "im feeling freaking annoyed" -> ...
 
 })

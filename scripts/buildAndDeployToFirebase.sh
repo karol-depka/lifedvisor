@@ -1,6 +1,7 @@
 #!/bin/bash
 
 testCafe () {
+  export TESTCAFE_RUN_ALL_TESTS="true"
   npm  --prefix  testcafe  run  tcafe:ffch  --debug-on-fail
 }
 
