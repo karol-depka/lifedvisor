@@ -1,5 +1,5 @@
 import { askPage } from './pages/ask.po';
-import {LOCALHOST_URL} from './utilsGlobal/globals';
+import {TESTCAFE_URL} from './utilsGlobal/globals';
 import {checkHintsExist} from './scenarios/checkHintsExist';
 import {testRepetitions, testWrapper} from './utilsGlobal/testRunner';
 
@@ -7,7 +7,7 @@ console.log(`Starting TestCafe tests`, new Date());
 
 (fixture (`Fixture: LifeDvisor Web` ) as any)
 // .disablePageReloads
-  .page(LOCALHOST_URL)
+  .page(TESTCAFE_URL)
 // .beforeEach(async t => {
 //   logDebug('beforeEach(')
 // await dismissCookieLawViaCookie(t)
@@ -67,5 +67,7 @@ testRepetitions(() => {
   })
 
   // TODO: test partial matching. E.g. "im feeling freaking annoyed" -> ...
+
+  // TODO: test sub-element being expanded to show element matching search query
 
 })
