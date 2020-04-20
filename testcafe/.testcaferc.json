@@ -1,9 +1,9 @@
 {
-//  "videoPath": "reports/screen-captures"
+  // "videoPath": "reports/screen-captures"
   "skipJsErrors": false,
   "assertionTimeout": 5000,
   "selectorTimeout": 5000,
-//  "debugOnFail": false,
+  "debugOnFail": true,
   "screenshots": {
     "takeOnFails": true,
     "path": "screenshots",
