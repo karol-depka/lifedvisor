@@ -27,10 +27,10 @@ doAll () {
   #git tag test_`date --utc +%Y-%m-%d_%H.%M.%SZ`
 
   #ng build \
-  npm  run  lws  &
 
   time \
         npm  run  build.prod  \
+    &&  (npm  run  lws  &)  \
     &&  TESTCAFE_URL="http://localhost:8811/"  testCafe  \
     &&  time  firebase  deploy  --only hosting  \
     &&  git tag deploy_`date -u +%Y-%m-%d__%H.%M.%SZ`  \
