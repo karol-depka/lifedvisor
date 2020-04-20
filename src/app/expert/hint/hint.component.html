@@ -59,12 +59,12 @@
   <div class="btn-group btn-group-toggle" style="flex-grow: 0">
     <label  *ngIf="wish.ifYes"
             class="btn-dark" ngbButtonLabel>
-      <input type="checkbox" ngbButton [(ngModel)]="isExpanded">How to improve?<!--Yes-->
+      <input type="checkbox" ngbButton [(ngModel)]="isExpandedManually">How to improve?<!--Yes-->
     </label>
   </div>
 
   <div
-    *ngIf="isExpanded && wish.ifYes ?. length"
+    *ngIf="( isExpandedManually || isOnlyVisibleToShowChild ) && ( wish.ifYes ?. length )"
   >
     <p style="margin-top: 10px;">This will help You:</p>
     <div

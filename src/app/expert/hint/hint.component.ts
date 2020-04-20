@@ -9,7 +9,7 @@ import {
 } from '../../shared-with-testcafe/Hint';
 import { HintFinder } from '../ask-page/HintFinder';
 
-/** Hint, Wish, Problem */
+/** Hint, Wish, Problem / Question */
 @Component({
   selector: 'app-hint[filter][wish]',
   templateUrl: './hint.component.html',
@@ -18,7 +18,7 @@ import { HintFinder } from '../ask-page/HintFinder';
 export class HintComponent implements OnInit {
 
   @Input()
-  isExpanded = false
+  isExpandedManually = false
 
   @Input()
   filter: Filter = ``
@@ -32,17 +32,6 @@ export class HintComponent implements OnInit {
   get isOnlyVisibleToShowChild () {
     return ! ( this.matchesFilter() || this.ancestorMatchesFilter )
   }
-  //   = {
-  //   text: 'Avoid overeating',
-  //   children: [
-  //     {
-  //       text: 'Avoid procrastinating'
-  //     },
-  //     {
-  //       text: 'Make small progress'
-  //     }
-  //   ]
-  // }
 
   static hintsCount = 0
   static hintsCountStrings = 0
@@ -58,7 +47,7 @@ export class HintComponent implements OnInit {
   }
 
   onClickYes() {
-    this.isExpanded = true
+    this.isExpandedManually = true
   }
 
   matchesFilter() {
