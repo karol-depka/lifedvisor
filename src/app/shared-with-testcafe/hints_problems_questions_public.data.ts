@@ -30,6 +30,7 @@ import {
   hint,
   hintBridge,
   problem,
+  question,
   wish,
 } from './Hint';
 import { HintSource } from './HintSource';
@@ -52,6 +53,7 @@ export class Questions {
     subTitle: `(so as to avoid escapism and low mood)`,
     searchTerms: [`annoyed`, `annoying`, `pissed off`, `uncomfortable`],
     ifYes: [
+      hint(`Invest in your infrastructure`),
       hint(`Invest the time to make your surroundings clean, neat and functional`),
       hint({ text: `Invest the time to finish nagging loose ends, instead of trying to escape from them`,
         subTitle: `(can swiss-cheese them if too overwhelming)`,
@@ -111,6 +113,8 @@ export class Questions {
     ]
   })
 
+  'Use Ikigai' = hint()
+
   'Success / achievement' = wish({
     ifYes: [
       hint(`Dont confuse activity with achievement`),
@@ -118,7 +122,7 @@ export class Questions {
         ifYes: [
           hint(`Acknowledge certain limitations`),
           hint(`You cannot be a sumo wrestler and ski jumper at the same time.`),
-          hint(`Use Ikigai`),
+          this['Use Ikigai'],
         ]
       })
     ]
@@ -351,7 +355,15 @@ export class Questions {
       hint({
         title: `Allocate big blocks of uninterrupted time for tasks which require deeper focus`,
         ifYes: [
-          hint(`If necessary, go to your family/coworkers/flatmates and ask them if they need anything and tell them that You are going to have a big block of focused time now.`)
+          hint(`If necessary, go to your family/coworkers/flatmates and ask them if they need anything and tell them that You are going to have a big block of focused time now.`),
+          hint({
+            title: `Prepare your work area before starting a big chunk of uninterrupted time`,
+            ifYes: [
+              hint({title: `Prepare water in a non-spill bottle`,
+                subTitle: `(or even multiple bottles)`,
+              }),
+            ]
+          })
         ]
       })
     ]
@@ -577,6 +589,10 @@ export class Questions {
           }),
         ],
       }),
+      hint({
+        title: `Choosing which things to do`,
+        subTitle: `TODO: Planning, prioritization, values, ikigai, decisions, etc`
+      })
     ]
   })
 
@@ -669,6 +685,7 @@ export class Questions {
             ],
           }),
           hint({title: `Get better at doing things`,
+            searchTerms: [`execute tasks better`, `get more skilled`],
             titleSuffix: `In general`,
             ifYes: [
               this['Learning and remembering things'],
@@ -680,7 +697,17 @@ export class Questions {
                   hint(`Be careful to not over-delegate.`)
                 ]
               }),
-              hint(`Reach a state of Flow`),
+              hint({
+                title: `Reach a state of Flow`,
+                ifYes: [
+                  hint({ title: `Maintain the right level of arousal.`,
+                    subTitle: `Not too high, not too low.`
+                  }),
+                  hint({ title: `Pick tasks that are the right difficulty level`,
+                    subTitle: `They should be exciting. Too high difficulty, and they will be overwhelming. Too low difficulty and they will be boring.`
+                  })
+                ]
+              }),
               hint(`Sustained relaxed focus`),
               hint(`Avoid mental blocks`),
               hint(`Work from a list`),
@@ -695,12 +722,6 @@ export class Questions {
     ]
   })
 
-  'Software design' = hint({
-    ifYes: [
-      this['Prioritizing'],
-    ]
-  })
-
   'Solving problems' = hint({
     ifYes: [
       hint(`Thinking is a skill too`),
@@ -712,14 +733,30 @@ export class Questions {
     ]
   })
 
-  'Debugging' = hint({
-    ifYes: [
-      this['Solving problems']
-    ]
-  })
 
-  'Software development' = hint({
+  'Software Development' = hint({
     ifYes: [
+      hint({
+        title: `Software design`,
+        ifYes: [
+          this['Prioritizing'],
+        ],
+      }),
+      problem({
+        title: `Programming when having trouble thinking/focusing (e.g. sleepy / not had enough sleep / hangover / distractions / mental fog etc)`,
+        comments: `(Example of something that is on intersection of multiple aspects; this could be taken from search keywords).`,
+        ifYes: [
+          hint(`Focus on things that improve confidence, e.g. writing tests or working in areas with good test coverage, to not introduce more bugs.`),
+          hint(`Make sure changes are committed, to not make a mess.`),
+        ]
+      }),
+      hint({
+        title: `Debugging`,
+        ifYes: [
+          this['Solving problems']
+        ]
+      }),
+
       hint({ text: `Assess quality / popularity of given project/library/program`,
         ifYes: [
           hint(`Use https://bestofjs.org/projects/testcafe`),
@@ -729,8 +766,17 @@ export class Questions {
       hint({
         text: 'Be faster at programming',
         ifYes: [
-          hint('Use IDE/editor navigation history; back/forward'),
-          hint('Use keyboard shortcut to get to matching brace (^M)'),
+          hint({
+            title: `Get faster at navigating to the desired place`,
+            ifYes: [
+              hint('Use IDE/editor navigation history; back/forward'),
+              hint('Use keyboard shortcut to get to matching brace (^M)'),
+              hint({
+                title: `Instead of manually navigating to places (time & energy consuming), use search functions`,
+                subTitle: `Global find, navigate to class/file/symbol`,
+              })
+            ]
+          }),
         ]
       }),
     ]
@@ -789,6 +835,7 @@ export class Questions {
       hint('Take gratification from finishing tasks and making improvements'),
       hint('Take gratification from learning new things and strengthening previous knowledge'),
       hint('Take gratification from being/becoming well-organized, ready, prepared, clean'),
+      hint(`Managing your dopamine levels/"calibration"`),
     ]
   })
 
@@ -914,7 +961,7 @@ export class Questions {
   })
 
   Cravings = problem({
-    text: `Dealing with cravings / urges (in general)`,
+    text: `Dealing with cravings / urges / temptations / addictions (in general)`,
     ifYes: [
       hint(`Surfing the urge`),
       this['Managing gratification'],
@@ -1233,14 +1280,6 @@ export class Questions {
     ]
   })
 
-  'Programming when having trouble thinking/focusing (e.g. sleepy / not had enough sleep / hangover / distractions / mental fog etc)' = problem({
-    comments: `(Example of something that is on intersection of multiple aspects; this could be taken from search keywords).`,
-    ifYes: [
-      hint(`Focus on things that improve confidence, e.g. writing tests or working in areas with good test coverage, to not introduce more bugs.`),
-      hint(`Make sure changes are committed, to not make a mess.`),
-    ]
-  })
-
   'Start the day well' = hint({
     ifYes: [
       this['Getting up from sleep/bed'],
@@ -1249,7 +1288,7 @@ export class Questions {
           hint(`Wash your face and even neck with cold water to awaken fully.`),
           hint({ text: `Plan the day`,
             ifYes: [
-              this['Planning a day']
+              this['Planning a day'],
             ]
           }),
         ]
@@ -1339,6 +1378,17 @@ export class Questions {
         subTitle: `Try to be more specific. And it's not only about money.`
       }),
       hint(`Earn more`),
+    ]
+  })
+
+  'How to live' /* root? */ = wish({
+    ifYes: [
+      question({
+        title: `What to do in life?`,
+        ifYes: [
+          this['Use Ikigai'],
+        ]
+      })
     ]
   })
 

@@ -64,3 +64,4 @@ export function hint(param?: LiHint | string): LiHint {
 export const hintBridge = hint
 export const problem = hint
 export const wish = hint
+export const question = hint
