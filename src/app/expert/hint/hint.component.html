@@ -64,7 +64,7 @@
   </div>
 
   <div
-    *ngIf="( isExpandedManually || isOnlyVisibleToShowChild ) && ( wish.ifYes ?. length )"
+    [hidden]="! ( isExpandedManually || isOnlyVisibleToShowChild ) && ( wish.ifYes ?. length )"
   >
     <p style="margin-top: 10px;">This will help You:</p>
     <div
@@ -82,7 +82,4 @@
     </div>
   </div>
 
-
 </div>
-
-
