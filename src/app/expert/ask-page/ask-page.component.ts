@@ -30,7 +30,7 @@ export class AskPageComponent implements OnInit {
 
   constructor() {
     this.filterToThrottle$.pipe(
-      debounceTime(100)
+      debounceTime(300)
     ).subscribe(value => {
       this.textField = value
     })
