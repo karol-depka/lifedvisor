@@ -77,4 +77,6 @@ testRepetitions(() => {
 
   // TODO: test partial matching. E.g. "im feeling freaking annoyed" -> ...
 
+  // TODO: test typing characters one-by-one to test debounce and filtering performance
+
 })
