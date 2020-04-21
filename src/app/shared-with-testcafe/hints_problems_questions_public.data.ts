@@ -1100,6 +1100,7 @@ export class Questions {
       hint(`Failure is not so probable really, since You have been gathering skills, resources, contacts and personal qualities for a long time, ready to put them to good use.`),
       hint(`Realise, that You control the probability of success`),
       hint(`Get busy working towards ensuring success and preventing failure`),
+      hint(`You have done similar things before, with success`),
     ],
   })
 
