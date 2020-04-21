@@ -1085,7 +1085,7 @@ export class Questions {
   })
 
   'Acting stupid' = hint({
-    /* wanna be smarter more clever, intelligent */
+    searchTerms: [`wanna be smarter more clever, intelligent`],
     ifYes: [
       hint(`Breathing`),
       hint(`Avoid sugar spikes`),
