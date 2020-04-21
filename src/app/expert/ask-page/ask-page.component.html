@@ -17,7 +17,7 @@
   </label>
 </div>
 
-<ng-container *ngFor="let problem of filteredProblems">
+<ng-container *ngFor="let problem of (filteredProblems | slice:0:100)">
 
   <app-hint
     [hidden]="! isVisibleViaFilter(problem)"
