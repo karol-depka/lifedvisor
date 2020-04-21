@@ -64,22 +64,27 @@
   </div>
 
   <div
-    [hidden]="! ( isExpandedManually || isOnlyVisibleToShowChild ) && ( wish.ifYes ?. length )"
+    [hidden]="! (wish.ifYes ?. length)"
   >
-    <p style="margin-top: 10px;">This will help You:</p>
     <div
-      class="hint-children"
-      *ngFor="let childWish of wish.ifYes"
+      [hidden]="! ( isExpandedManually || isOnlyVisibleToShowChild )"
     >
-      <app-hint
-        [hidden]="! (isVisibleViaFilter(childWish) || ancestorMatchesFilter || matchesFilter())"
-        [wish]="childWish"
-        [ancestorMatchesFilter]="matchesFilter() || ancestorMatchesFilter"
-        [filter]="filter"
+      <p style="margin-top: 10px;">This will help You:</p>
+      <div
+        class="hint-children"
+        *ngFor="let childWish of wish.ifYes"
       >
-        <!-- [isExpanded]="isExpanded" -->
-      </app-hint>
+        <app-hint
+          [hidden]="! (isVisibleViaFilter(childWish) || ancestorMatchesFilter || matchesFilter())"
+          [wish]="childWish"
+          [ancestorMatchesFilter]="matchesFilter() || ancestorMatchesFilter"
+          [filter]="filter"
+        >
+          <!-- [isExpanded]="isExpanded" -->
+        </app-hint>
+      </div>
     </div>
   </div>
+
 
 </div>
