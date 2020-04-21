@@ -21,6 +21,10 @@
 
 /* 2019-12-25 Self-rating would be really important for actual accountability and force myself to really evaluate current state and what are weakest/strongest points */
 
+/* First person or second person writing? ("I visualize" or "[You should] visualize)
+- https://www.psychologytoday.com/us/blog/the-novel-perspective/201506/fooling-your-ego
+ - - Tricking the Censoring Ego
+* */
 /**
  * Root tree structure:
  * - "Have a good life" - root wish/hint
@@ -121,7 +125,7 @@ export class Questions {
       hint({ text: `Define what success means for You`,
         ifYes: [
           hint(`Acknowledge certain limitations`),
-          hint(`You cannot be a sumo wrestler and ski jumper at the same time.`),
+          hint(`You cannot be a successful sumo wrestler and ski jumper at the same time.`),
           this['Use Ikigai'],
         ]
       })
@@ -211,7 +215,9 @@ export class Questions {
     },
     ifYes: [
       hint(`Think of close-by believable milestones but have a bigger context/vision to expand to, for excitement`),
-      hint(`Sampling of future bigger pleasures.`) /* TODO: for balance between productivity and fun */,
+      hint({title: `Sampling of future bigger pleasures.`,
+        subTitle: `for balance between productivity and fun`,
+      }),
       hint({title: `Overcome doubts via thinking`}),
       hint(`Create positive associations with the things You would like be motivated towards.`),
       hint(`As Confucius said: "Choose a job you love, and you will never have to work a day in your life."`),
@@ -240,7 +246,7 @@ export class Questions {
             subTitle: `So keep them in balance with the rest of life`}),
         ]
       }),
-      hint(`It's good to ask why to increase motivation - why I should I be motivated towards something. But not as many times as to reach origin of life or the universe or even meaning of life (can risk triggering existential void)`),
+      hint(`It's good to ask "why?" to increase motivation - why I should I be motivated towards something. But not as many times as to reach origin of life or the universe or even meaning of life (can risk triggering existential void)`),
       hint({
         text: 'Recall earlier times when You did big progress, eg when You were younger and more hungry. How did You reach here? Now repeat that spirit with all the more resources and wisdom that You have.',
         ifYes: [
@@ -378,7 +384,8 @@ export class Questions {
       }),
       hint({ text: 'Tomorrow is a day, too (jutro też jest dzień)'
       }),
-      hint({ text: 'Think about (and visualize) the benefits of going to sleep at the right time, including being well-rested and the #consecuences of not having enough sleep (harder to control cravings, impaired thinking and memory), leading to bad life quality, bad emotions, frustration, sickness.'
+      hint({ text: 'Think about (and visualize) the benefits of going to sleep at the right time,',
+        subTitle: `including being well-rested and the #consecuences of not having enough sleep (harder to control cravings, impaired thinking and memory), leading to bad life quality, bad emotions, frustration, sickness.`,
       }),
     ]
   })
@@ -423,13 +430,14 @@ export class Questions {
         subTitle: `They could help You in making a specific decision`,
       }),
       hint({
-        text: 'consider the alternatives',
+        text: 'Consider the alternatives',
         ifYes: [
           hint('Look also at the consequences of inaction or not making the decision'),
         ]
       }),
       hint({
-        text: 'use Pareto principle'
+        text: 'Use Pareto Principle',
+        subTitle: `The so-called 80/20 rule`,
       }),
       hint({
         text: 'Visualize consequences (financial, emotional, physical, productivity, etc)'
@@ -443,7 +451,8 @@ export class Questions {
     ]
   })
 
-  'Decide what I want to be; I can\'t be a sumo wrestler and ski jumper at the same time' = hint({
+  'Decide what I want to be in life' = hint({
+    subTitle: `I can't be a sumo wrestler and ski jumper at the same time`,
     ifYes: [
       hint({
         text: 'Choose if I want to still be free and explore or settle down. BUT building a solid base and income can make it easier to travel.'
@@ -1084,7 +1093,19 @@ export class Questions {
     ]
   })
 
+  'Overcome fear of failure' = hint({
+    searchTerms: [`Worrying about failing`],
+    ifYes: [
+      hint(`Even if You fail, the journey makes You stronger, more resourceful and ready to try another time or pivot to something else.`),
+      hint(`Failure is not so probable really, since You have been gathering skills, resources, contacts and personal qualities for a long time, ready to put them to good use.`),
+      hint(`Realise, that You control the probability of success`),
+      hint(`Get busy working towards ensuring success and preventing failure`),
+    ],
+  })
+
+
   'Build own business' = hint({
+    searchTerms: [`my own company`],
     ifYes: [
       hint({ title: `Think like a business person!`,
         subTitle: `It requires as certain reprogramming of mindset. Need to get rid of habits of thought and action related to being an employee.`,
@@ -1129,19 +1150,19 @@ export class Questions {
           }),
         ],
       }),
-      hint({ text: `Overcome fear of failure.`,
-        ifYes: [
-          hint(`Even if You fail, the journey makes You stronger, more resourceful and ready to try another time or pivot to something else.`),
-          hint(`Failure is not so probable really, since You have been gathering skills, resources, contacts and personal qualities for a long time, ready to put them to good use.`),
-          hint(`Realise, that You control the probability of success`),
-        ]
-      }),
       hint({
         title: `Overcome fear of success.`,
       }),
       /* Fear of wasting time / failing: remember there will be activities that You like and are proud of; e.g. programming, designing apps */
-      hint(`Don't worry as much about chasing the latest and greatest technologies, because You will hardly release anything. Focus on value for users and, building working prototypes, and on releaseable version.`),
+      hint({title: `Don't worry as much about chasing the latest and greatest technologies`,
+        subTitle: `... because You will hardly release anything. Focus on value for users and, building working prototypes, and on releaseable version.`,
+      }),
       hint(`At first, skip certain details that can be defined later.`),
+      hint({title: `Release / publish your product`,
+        ifYes: [
+          this['Overcome fear of failure'],
+        ]
+      }),
     ]
   })
 
@@ -1316,6 +1337,17 @@ export class Questions {
       }),
       hint(`Mindfulness`),
       hint(`Allocate and spend time on self-improvement`),
+      hint({
+        title: `Maintain a journal / diary`,
+        ifYes: [
+          hint({
+            title: `Consider writing the journal in third-person`,
+            sources: [
+              new HintSource(`https://www.psychologytoday.com/us/blog/the-novel-perspective/201506/fooling-your-ego`),
+            ]
+          })
+        ],
+      }),
       hint(`When you get an idea or epiphany, take a moment to acknowledge it, reflect on it, internalize it, let it sink in.`),
       hint(`Cultivate Your Epiphanies`),
       hint(`Actively look for positive/negative patterns that occur in Your life, Your behaviour.`),
@@ -1385,7 +1417,7 @@ export class Questions {
     ifYes: [
       question({
         title: `What to do in life?`,
-        searchTerms: [`What should I do with my life`],
+        searchTerms: [`Decide What should I do with my life`],
         ifYes: [
           this['Use Ikigai'],
         ]
